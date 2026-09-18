@@ -1,0 +1,31 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+dist/
+build/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Research data — real names, phone numbers and payment details never enter git
+phase-0/research/interviews/*
+!phase-0/research/interviews/.gitkeep
+phase-0/concierge/task-log.csv
+phase-0/research/participants.csv

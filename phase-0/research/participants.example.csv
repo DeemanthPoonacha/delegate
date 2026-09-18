@@ -1,0 +1,3 @@
+id,side,first_name,segment,screened_on,interviewed_on,source,floor_rate_or_wtp,agreed_to_real_task,task_id,would_pay_again,notes_file
+R-01,requester,,salaried-professional,2026-09-22,2026-09-22,tech-park-group,,no,,unclear,interviews/R-01-example.md
+D-01,doer,,student,2026-09-23,2026-09-24,campus-group,250,yes,T-03,,interviews/D-01-example.md

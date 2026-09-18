@@ -1,0 +1,3 @@
+task_id,date_in,requester_id,doer_id,task_in_their_words,category_assigned_after,price_inr,doer_paid_inr,in_person,scoping_min,matching_min,support_min,deadline,delivered_at,sent_back_once,requester_used_it,repeat_request,dispute,what_broke
+T-01,2026-09-28,R-03,D-07,"need someone to call HDFC ergo and log my claim",insurance-and-claims,150,123,no,10,25,5,2026-09-29T18:00,2026-09-29T16:40,no,yes,no,no,
+T-02,2026-09-29,R-05,D-02,"3 hotels in north goa under 6k with free cancellation",travel-and-bookings,499,409,no,15,20,20,2026-09-30T20:00,2026-10-01T09:15,yes,yes,yes,no,"missed cancellation terms on 2 of 3 — template needs it as a required field"
