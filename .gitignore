@@ -29,3 +29,6 @@ phase-0/research/interviews/*
 !phase-0/research/interviews/.gitkeep
 phase-0/concierge/task-log.csv
 phase-0/research/participants.csv
+
+# Claude Code — share agents and project settings, keep local overrides out
+.claude/settings.local.json
