@@ -40,5 +40,10 @@ for label in sprint-1 sprint-2; do
 done
 echo
 echo "Added $count issues to board #$NUM"
+
+# Populate Sprint / Role / Estimate from the ticket markdown. Field-create above only
+# defines the columns; without this pass every item lands on the board unset.
+echo "Populating fields"
+python3 scripts/populate-board-fields.py "$NUM" "$OWNER"
 gh project view "$NUM" --owner "$OWNER" --web 2>/dev/null || \
   echo "Board: https://github.com/users/$OWNER/projects/$NUM"
