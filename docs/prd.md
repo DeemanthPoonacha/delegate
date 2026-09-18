@@ -1,3 +1,10 @@
+<!--
+Exported from the source Claude doc on 2026-09-18.
+Source: https://claude.ai/artifact/T7ZryQuARNfsnFeC9XHCSn
+The doc is the editable original; this file is a snapshot. Re-export rather than
+editing both, and note the doc revision here when you do (exported at rev 27).
+-->
+
 # Delegate — Product Requirements & Build Plan
 
 2026-09-17 · Owner: @owner · Status: Draft v0.1
