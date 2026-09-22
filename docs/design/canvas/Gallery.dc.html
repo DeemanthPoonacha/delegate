@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>What people delegate</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+a{color:#0E7C5A;text-decoration:none}a:hover{color:#0A5E44}
+button{font-family:inherit;cursor:pointer}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFFFFF; display: flex; flex-direction: column; padding: 52px 0 0;">
+
+  <div style="padding: 0 24px 16px; display: flex; flex-direction: column; gap: 10px;">
+    <span style="display: inline-flex; align-self: flex-start; align-items: center; height: 26px; padding: 0 10px; border-radius: 999px; background: #F6F6F7; border: 1px solid #ECECEE; font-size: 12px; color: #6E7076;">Phase 4+</span>
+    <h1 style="margin: 0; font-size: 27px; font-weight: 600; line-height: 1.12; letter-spacing: -1px; color: #0B0B0C;">What people<br>actually delegate</h1>
+    <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: #6E7076;">Real tasks, real prices, from the last week. Tap one to run it yourself.</p>
+  </div>
+
+  <div style="flex-grow: 1; overflow: hidden; padding: 0 24px; display: flex; flex-direction: column;">
+    <sc-for list="{{ examples }}" as="e" hint-placeholder-count="6">
+      <a href="Post.dc.html" style="padding: 17px 0; display: flex; align-items: flex-start; gap: 14px; border-bottom: 1px solid #ECECEE;">
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 5px;">
+          <span style="font-size: 15.5px; font-weight: 500; line-height: 1.35; color: #0B0B0C;">{{ e.title }}</span>
+          <span style="font-size: 13px; color: #6E7076;">{{ e.meta }}</span>
+        </div>
+        <span style="font-size: 16px; font-weight: 600; color: #0B0B0C; font-variant-numeric: tabular-nums;">{{ e.price }}</span>
+      </a>
+    </sc-for>
+  </div>
+
+  <div style="padding: 14px 24px 24px; border-top: 1px solid #ECECEE;">
+    <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #6E7076;">Most people cannot name what is delegable until they see someone else delegate it. This screen is the teaching surface.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      examples: [
+        { title: 'Fight a refund through support chat until it is resolved', meta: 'Consumer · 1–2 hrs · 34 last week', price: '₹299' },
+        { title: 'Call 15 flat listings, return 5 genuine owner contacts', meta: 'Research · 2 hrs · 28 last week', price: '₹499' },
+        { title: 'Log an insurance claim and send the claim number', meta: 'Insurance · 40 min · 61 last week', price: '₹150' },
+        { title: 'Book the earliest doctor slot within 5 km of my office', meta: 'Errand · 30 min · 19 last week', price: '₹150' },
+        { title: 'Lowest landed price across 4 sites, bank offers included', meta: 'Research · 1 hr · 23 last week', price: '₹250' },
+        { title: 'Queue at the sub-registrar and collect a document', meta: 'In person · 3 hrs · 8 last week', price: '₹399' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

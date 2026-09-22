@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post a task in under 90 seconds</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+a{color:#0E7C5A;text-decoration:none}a:hover{color:#0A5E44}
+button{font-family:inherit;cursor:pointer}
+textarea{font-family:inherit}
+textarea::placeholder{color:#9A9CA3}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFFFFF; display: flex; flex-direction: column; padding: 52px 0 0;">
+
+  <div style="padding: 0 14px 0 14px; display: flex; align-items: center; justify-content: space-between;">
+    <a href="HomeRequester.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #0B0B0C;">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>
+    </a>
+    <span style="padding-right: 14px; font-size: 13px; color: #6E7076; font-variant-numeric: tabular-nums;">0:38</span>
+  </div>
+
+  <div style="flex-grow: 1; overflow: hidden; padding: 6px 24px 0; display: flex; flex-direction: column; gap: 22px;">
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <label for="what" style="font-size: 13px; font-weight: 500; color: #6E7076;">What needs doing</label>
+      <textarea id="what" rows="3" style="border: none; outline: none; background: transparent; padding: 0; resize: none; font-size: 19px; font-weight: 500; line-height: 1.35; letter-spacing: -0.3px; color: #0B0B0C;">Call ICICI Lombard, log my motor claim and send me the claim number</textarea>
+      <div style="display: flex; align-items: center; gap: 8px; padding-bottom: 18px; border-bottom: 1px solid #ECECEE;">
+        <span style="font-size: 13px; color: #6E7076;">Sorted into</span>
+        <button type="button" style="height: 30px; padding: 0 12px; border-radius: 999px; background: #F6F6F7; border: 1px solid #ECECEE; font-size: 13px; font-weight: 500; color: #0B0B0C;">Insurance &amp; claims</button>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <span style="font-size: 13px; font-weight: 500; color: #6E7076;">How big</span>
+      <div style="display: flex; gap: 10px;">
+        <button type="button" onClick="{{ pickQuick }}" style="{{ quickStyle }}">
+          <span style="font-size: 15px; font-weight: 600;">Quick</span>
+          <span style="font-size: 12.5px; color: #6E7076;">Under 3 hours · you set the price</span>
+        </button>
+        <button type="button" onClick="{{ pickProject }}" style="{{ projectStyle }}">
+          <span style="font-size: 15px; font-weight: 600;">Project</span>
+          <span style="font-size: 12.5px; color: #6E7076;">Longer · doers pitch to a budget</span>
+        </button>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: baseline; justify-content: space-between;">
+        <span style="font-size: 13px; font-weight: 500; color: #6E7076;">Your price</span>
+        <span style="font-size: 13px; color: #6E7076;">similar tasks ₹150–₹300</span>
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <sc-for list="{{ prices }}" as="p" hint-placeholder-count="4">
+          <button type="button" onClick="{{ p.pick }}" style="{{ p.style }}">{{ p.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <span style="font-size: 13px; font-weight: 500; color: #6E7076;">By when</span>
+      <div style="display: flex; gap: 8px;">
+        <sc-for list="{{ days }}" as="d" hint-placeholder-count="3">
+          <button type="button" onClick="{{ d.pick }}" style="{{ d.style }}">{{ d.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 16px 24px 24px; display: flex; flex-direction: column; gap: 12px;">
+    <a href="Applicants.dc.html" style="height: 54px; border-radius: 12px; background: #0B0B0C; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600;">Post — {{ price }}</a>
+    <p style="margin: 0; text-align: center; font-size: 13px; color: #6E7076;">Nothing is charged until you pick a doer.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var s = this.state || {};
+    var tier = s.tier || 'quick';
+    var price = s.price || '₹250';
+    var day = s.day || 'Today';
+    var self = this;
+
+    var tierBase = 'flex-grow:1;display:flex;flex-direction:column;gap:4px;align-items:flex-start;text-align:left;padding:14px;border-radius:12px;background:#FFFFFF;color:#0B0B0C;';
+    var tierOn = tierBase + 'border:1.5px solid #0B0B0C;';
+    var tierOff = tierBase + 'border:1px solid #ECECEE;';
+
+    var chip = function (active) {
+      return 'flex-grow:1;height:46px;border-radius:12px;font-size:15px;font-variant-numeric:tabular-nums;' +
+        (active ? 'background:#0B0B0C;color:#FFFFFF;border:1.5px solid #0B0B0C;font-weight:600;'
+                : 'background:#FFFFFF;color:#6E7076;border:1px solid #ECECEE;font-weight:500;');
+    };
+
+    return {
+      price: price,
+      quickStyle: tier === 'quick' ? tierOn : tierOff,
+      projectStyle: tier === 'project' ? tierOn : tierOff,
+      pickQuick: () => this.setState({ tier: 'quick' }),
+      pickProject: () => this.setState({ tier: 'project' }),
+      prices: ['₹150', '₹250', '₹500', '₹999'].map(function (p) {
+        return { label: p, style: chip(p === price), pick: function () { self.setState({ price: p }); } };
+      }),
+      days: ['Today', 'Tomorrow', 'This week'].map(function (d) {
+        return { label: d, style: chip(d === day), pick: function () { self.setState({ day: d }); } };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-09-22T09:00:00Z" },
+  "title": "Delegate — Design Source",
+  "launch": { "view": "canvas" },
+  "pages": [],
+  "boards": {
+    "Main.dc.html":          { "x": 0,    "y": 0,    "w": 1240, "h": 880, "title": "Quiet — the system" },
+    "EscrowStates.dc.html":  { "x": 1320, "y": 0,    "w": 1240, "h": 560, "title": "Escrow states — engineering reference" },
+
+    "Phone.dc.html":         { "x": 0,    "y": 1240, "w": 390, "h": 844, "title": "1 · Phone number",        "is_interactive": true },
+    "Otp.dc.html":           { "x": 470,  "y": 1240, "w": 390, "h": 844, "title": "2 · Verification code",   "is_interactive": true },
+    "Profile.dc.html":       { "x": 940,  "y": 1240, "w": 390, "h": 844, "title": "3 · Profile",             "is_interactive": true },
+    "Kyc.dc.html":           { "x": 1410, "y": 1240, "w": 390, "h": 844, "title": "4 · Verify identity",     "is_interactive": true },
+    "KycPending.dc.html":    { "x": 1880, "y": 1240, "w": 390, "h": 844, "title": "5 · Pending / failed / review", "is_interactive": true },
+
+    "HomeRequester.dc.html": { "x": 0,    "y": 2440, "w": 390, "h": 844, "title": "6 · Home — requester",    "is_interactive": true },
+    "Post.dc.html":          { "x": 470,  "y": 2440, "w": 390, "h": 844, "title": "7 · Post in under 90s",   "is_interactive": true },
+    "Applicants.dc.html":    { "x": 940,  "y": 2440, "w": 390, "h": 844, "title": "8 · Choose a doer",       "is_interactive": true },
+    "Fund.dc.html":          { "x": 1410, "y": 2440, "w": 390, "h": 844, "title": "9 · Hold the money",      "is_interactive": true },
+    "TaskRoom.dc.html":      { "x": 1880, "y": 2440, "w": 390, "h": 844, "title": "10 · Chat + deliverable dock", "is_interactive": true },
+
+    "Review.dc.html":        { "x": 0,    "y": 3640, "w": 390, "h": 844, "title": "11 · Review and release", "is_interactive": true },
+    "HomeDoer.dc.html":      { "x": 470,  "y": 3640, "w": 390, "h": 844, "title": "12 · Home — doer",        "is_interactive": true },
+    "DoerFeed.dc.html":      { "x": 940,  "y": 3640, "w": 390, "h": 844, "title": "13 · Find work",          "is_interactive": true },
+    "Earnings.dc.html":      { "x": 1410, "y": 3640, "w": 390, "h": 844, "title": "14 · Earnings and payout", "is_interactive": true },
+    "Guardrails.dc.html":    { "x": 1880, "y": 3640, "w": 390, "h": 844, "title": "15 · Where your money is", "is_interactive": true },
+
+    "VoicePost.dc.html":     { "x": 0,    "y": 4840, "w": 390, "h": 844, "title": "Later · Post by voice" },
+    "Gallery.dc.html":       { "x": 470,  "y": 4840, "w": 390, "h": 844, "title": "Later · What people delegate" },
+    "Bids.dc.html":          { "x": 940,  "y": 4840, "w": 390, "h": 844, "title": "Later · Compare pitches" },
+    "Vault.dc.html":         { "x": 1410, "y": 4840, "w": 390, "h": 844, "title": "Later · Credential vault" },
+    "Handoff.dc.html":       { "x": 1880, "y": 4840, "w": 390, "h": 844, "title": "Later · Doer prepares, you submit" },
+    "Bench.dc.html":         { "x": 2350, "y": 4840, "w": 390, "h": 844, "title": "Later · Your people" }
+  },
+  "order": [
+    "Main.dc.html", "EscrowStates.dc.html",
+    "Phone.dc.html", "Otp.dc.html", "Profile.dc.html", "Kyc.dc.html", "KycPending.dc.html",
+    "HomeRequester.dc.html", "Post.dc.html", "Applicants.dc.html", "Fund.dc.html", "TaskRoom.dc.html",
+    "Review.dc.html", "HomeDoer.dc.html", "DoerFeed.dc.html", "Earnings.dc.html", "Guardrails.dc.html",
+    "VoicePost.dc.html", "Gallery.dc.html", "Bids.dc.html", "Vault.dc.html", "Handoff.dc.html", "Bench.dc.html"
+  ],
+  "notes": {
+    "t1": { "x": 0, "y": -300, "text": "Foundations — the system, and every state money can be in", "kind": "title1", "maxW": 2560 },
+    "t2": { "x": 0, "y": 940,  "text": "Onboarding — Phase 1, the set nobody had drawn", "kind": "title1", "maxW": 2270 },
+    "t3": { "x": 0, "y": 2140, "text": "The requester loop — Phase 2", "kind": "title1", "maxW": 2270 },
+    "t4": { "x": 0, "y": 3340, "text": "Delivery, the doer side, the money — Phase 2 into 3", "kind": "title1", "maxW": 2270 },
+    "t5": { "x": 0, "y": 4540, "text": "Later — carried over, but not before Phase 4", "kind": "title1", "maxW": 2740 },
+    "n1": { "x": 2400, "y": 1240, "w": 320, "text": "Phase 1 exits when a doer can register, pass KYC and appear in a list. These five screens are exactly that — and none of the four earlier canvases contained a single one of them.\n\nScreen 5 is the one that matters. The failure path is the common path: a name that doesn't match, a verifier that can't decide. Each state names what went wrong and the one thing to do next." },
+    "n2": { "x": 2400, "y": 2440, "w": 320, "text": "No booking fee on the requester side. The 18% comes out of the doer's payout, so the price posted is the price paid — that is ADR-0002 made visible.\n\nOne earlier canvas charged the requester a fee at this step. It contradicts the fee decision, so it is not carried over." }
+  },
+  "designSystems": []
+}

@@ -13,8 +13,27 @@ Mobile tickets waiting on a spec:
 | [S2-11](../backlog/sprint-02-tickets.md) | KYC explainer, DigiLocker handoff, PAN and bank entry, pending/failed/under-review | S2 |
 | [S2-12](../backlog/sprint-02-tickets.md) | Doer home completeness prompts, verified badge | S2 |
 
-## Generated Screens & Design System
+## The design source
 
-The core UI screens and design system have been generated via **Stitch MCP** in project `2247593451938982513`:
-- See [stitch-screens.md](stitch-screens.md) for full design system guidelines (*Executive Precision*), screen IDs, functional element breakdowns, and visual previews.
+One canvas, one design system, twenty-three screens: **[canvas/](canvas/)**, live at
+<https://claude.ai/code/artifact/75cb0b5e-085f-4818-ae4d-525c99a1723a>.
 
+It unifies four earlier canvases and supersedes them. The system is "Quiet" — one typeface, one
+colour, the ground inverting with the role — chosen over the three alternatives (Ledger, Signal,
+Night desk) because it is the cheapest system to build and keep consistent, and because starving
+the interface of colour is what makes escrow impossible to miss. That matters at ₹21 net on a
+₹150 task.
+
+The four mobile tickets above now have screens. `Phone`, `Otp`, `Profile`, `Kyc` and `KycPending`
+did not exist in any earlier canvas — every one of them started at a logged-in home screen.
+
+### Superseded
+
+| Source | Status |
+| --- | --- |
+| [stitch-screens.md](stitch-screens.md) | Superseded. Kept for the screen IDs and previews; do not build from it. |
+| Delegate Mobile UI (`7fe84f9b`) | Superseded — its 16 screens and 4 system options are folded into the source above |
+| Delegate App UI (`f5b0b980`) | Superseded — its role-inversion idea is carried over |
+| Delegate — Requester Flow UI (`93ddf484`) | Superseded. Showed a 10% requester fee, which contradicts ADR-0002. |
+
+Only the canvas above is current. If a screen is not in it, it is not designed yet.

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sign in — verification code</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+a{color:#0E7C5A;text-decoration:none}a:hover{color:#0A5E44}
+button{font-family:inherit;cursor:pointer}
+input{font-family:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFFFFF; display: flex; flex-direction: column; padding: 52px 24px 24px;">
+
+  <a href="Phone.dc.html" aria-label="Back" style="width: 44px; height: 44px; margin-left: -10px; display: flex; align-items: center; justify-content: center; color: #0B0B0C;">
+    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>
+  </a>
+
+  <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; gap: 30px; padding-bottom: 40px;">
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <h1 style="margin: 0; font-size: 30px; font-weight: 600; line-height: 1.12; letter-spacing: -1.1px; color: #0B0B0C;">Enter the code</h1>
+      <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #6E7076;">Sent to +91 98450 41207. <a href="Phone.dc.html">Wrong number?</a></p>
+    </div>
+
+    <fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+      <legend style="font-size: 13px; font-weight: 500; color: #6E7076; padding: 0 0 4px;">Six-digit code</legend>
+      <div style="display: flex; gap: 9px;">
+        <sc-for list="{{ digits }}" as="d" hint-placeholder-count="6">
+          <span style="{{ d.style }}">{{ d.value }}</span>
+        </sc-for>
+      </div>
+    </fieldset>
+
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span style="font-size: 14px; color: #6E7076;">Didn't get it?</span>
+      <span style="font-size: 14px; font-weight: 500; color: #9A9CA3; font-variant-numeric: tabular-nums;">Resend in 0:24</span>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+    <a href="Profile.dc.html" style="height: 54px; border-radius: 12px; background: #0B0B0C; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600;">Verify</a>
+    <p style="margin: 0; font-size: 12.5px; color: #6E7076; text-align: center;">Five wrong tries locks this number for 30 minutes.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var base = 'flex-grow:1;height:60px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:600;color:#0B0B0C;font-variant-numeric:tabular-nums;';
+    var filled = base + 'border:1px solid #ECECEE;background:#F6F6F7;';
+    var active = base + 'border:1.5px solid #0B0B0C;background:#FFFFFF;';
+    var empty = base + 'border:1px solid #ECECEE;background:#FFFFFF;color:#C8CACE;';
+    return {
+      digits: [
+        { value: '4', style: filled }, { value: '1', style: filled },
+        { value: '9', style: filled }, { value: '0', style: filled },
+        { value: '', style: active }, { value: '', style: empty }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

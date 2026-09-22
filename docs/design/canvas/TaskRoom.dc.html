@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Task room — chat and the deliverable dock</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+a{color:#0E7C5A;text-decoration:none}a:hover{color:#0A5E44}
+button{font-family:inherit;cursor:pointer}
+input{font-family:inherit}
+input::placeholder{color:#9A9CA3}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFFFFF; display: flex; flex-direction: column; padding: 52px 0 0;">
+
+  <div style="padding: 0 10px 12px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #ECECEE;">
+    <a href="HomeRequester.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #0B0B0C;">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>
+    </a>
+    <span style="width: 32px; height: 32px; border-radius: 999px; background: #F6F6F7; border: 1px solid #ECECEE; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: #0B0B0C;">FR</span>
+    <div style="flex-grow: 1; display: flex; flex-direction: column;">
+      <span style="font-size: 15px; font-weight: 600; color: #0B0B0C;">Faisal R.</span>
+      <span style="font-size: 12.5px; color: #6E7076;">Insurance specialist · online</span>
+    </div>
+    <button type="button" aria-label="Task details" style="width: 44px; height: 44px; border: none; background: transparent; color: #0B0B0C; display: flex; align-items: center; justify-content: center;">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+    </button>
+  </div>
+
+  <div style="margin: 14px 24px 0; padding: 16px; background: #F6F6F7; border-radius: 14px; display: flex; flex-direction: column; gap: 13px;">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <span style="font-size: 13px; font-weight: 600; color: #0B0B0C;">What you get back</span>
+      <span style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: #0E7C5A; font-variant-numeric: tabular-nums;">
+        <span style="width: 6px; height: 6px; border-radius: 999px; background: #0E7C5A; display: block;"></span>₹250 held
+      </span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 9px;">
+      <sc-for list="{{ fields }}" as="f" hint-placeholder-count="3">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="{{ f.mark }}">
+            <sc-if value="{{ f.done }}" hint-placeholder-val="{{ true }}">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </sc-if>
+          </span>
+          <span style="{{ f.labelStyle }}">{{ f.label }}</span>
+          <span style="{{ f.valueStyle }}">{{ f.value }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 3px; border-top: 1px solid #ECECEE;">
+      <span style="padding-top: 11px; font-size: 12.5px; color: #6E7076;">2 of 3 · due 6:00 pm</span>
+      <a href="Review.dc.html" style="padding-top: 11px; font-size: 13px; font-weight: 500; color: #0B0B0C;">Open</a>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1; overflow: hidden; padding: 16px 24px 0; display: flex; flex-direction: column; gap: 12px;">
+    <span style="align-self: center; font-size: 12.5px; color: #6E7076;">Escrow funded · 11:04</span>
+    <sc-for list="{{ messages }}" as="m" hint-placeholder-count="4">
+      <div style="{{ m.row }}"><span style="{{ m.bubble }}">{{ m.text }}</span></div>
+    </sc-for>
+
+    <div style="display: flex; align-items: flex-start; gap: 11px; padding: 14px; border: 1px solid #ECECEE; border-radius: 12px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0B0B0C" stroke-width="1.9" stroke-linecap="round" style="flex-shrink: 0; margin-top: 1px;"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>
+      <span style="font-size: 13px; line-height: 1.5; color: #0B0B0C;">A message asking for your OTP was blocked. Delegate never needs your password, OTP or UPI PIN.</span>
+    </div>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 10px; padding: 12px 24px 24px; border-top: 1px solid #ECECEE;">
+    <button type="button" aria-label="Attach a file" style="width: 44px; height: 44px; flex-shrink: 0; border: 1px solid #ECECEE; border-radius: 999px; background: #FFFFFF; color: #0B0B0C; display: flex; align-items: center; justify-content: center;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21.4 11.05 12.25 20.2a5.5 5.5 0 0 1-7.78-7.78l9.19-9.19a3.67 3.67 0 1 1 5.18 5.18l-9.2 9.19a1.83 1.83 0 1 1-2.59-2.59l8.49-8.48"/></svg>
+    </button>
+    <label for="msg" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Message Faisal</label>
+    <input id="msg" type="text" placeholder="Message Faisal" style="flex-grow: 1; height: 44px; box-sizing: border-box; padding: 0 16px; border: 1px solid #ECECEE; border-radius: 999px; background: #FFFFFF; font-size: 15px; color: #0B0B0C; outline: none;">
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var done = 'width:17px;height:17px;flex-shrink:0;border-radius:999px;background:#0E7C5A;color:#FFFFFF;display:flex;align-items:center;justify-content:center;';
+    var todo = 'width:17px;height:17px;flex-shrink:0;border-radius:999px;border:1.5px solid #C8CACE;display:block;box-sizing:border-box;';
+    var mine = 'display:flex;justify-content:flex-end;';
+    var theirs = 'display:flex;justify-content:flex-start;';
+    var bMine = 'max-width:76%;padding:11px 14px;border-radius:16px 16px 4px 16px;background:#0B0B0C;color:#FFFFFF;font-size:14.5px;line-height:1.45;';
+    var bTheirs = 'max-width:76%;padding:11px 14px;border-radius:16px 16px 16px 4px;background:#F6F6F7;color:#0B0B0C;font-size:14.5px;line-height:1.45;';
+    return {
+      fields: [
+        { done: true, mark: done, label: 'Claim reference', labelStyle: 'flex-grow:1;font-size:14px;color:#0B0B0C;', value: 'MC-4471-2290', valueStyle: 'font-size:13.5px;font-weight:500;color:#0B0B0C;font-variant-numeric:tabular-nums;' },
+        { done: true, mark: done, label: 'Surveyor visit', labelStyle: 'flex-grow:1;font-size:14px;color:#0B0B0C;', value: '24 Sep', valueStyle: 'font-size:13.5px;font-weight:500;color:#0B0B0C;' },
+        { done: false, mark: todo, label: 'Confirmation SMS', labelStyle: 'flex-grow:1;font-size:14px;color:#6E7076;', value: '', valueStyle: 'font-size:13.5px;color:#6E7076;' }
+      ],
+      messages: [
+        { row: theirs, bubble: bTheirs, text: 'Got the policy number — calling them now.' },
+        { row: mine, bubble: bMine, text: 'Thanks. Dent is on the rear left door.' },
+        { row: theirs, bubble: bTheirs, text: 'Logged. Reference MC-4471-2290, surveyor 24 Sep.' },
+        { row: theirs, bubble: bTheirs, text: 'Waiting on their SMS, will attach it when it lands.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

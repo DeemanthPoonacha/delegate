@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Escrow states — engineering reference</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+a{color:#0E7C5A;text-decoration:none}a:hover{color:#0A5E44}
+</style>
+</helmet>
+<div style="width: 1240px; height: 560px; box-sizing: border-box; background: #FFFFFF; padding: 40px 48px; display: flex; flex-direction: column; gap: 24px;">
+
+  <div style="display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: 18px; border-bottom: 1px solid #ECECEE;">
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <span style="font-size: 24px; font-weight: 600; letter-spacing: -0.8px; color: #0B0B0C;">Escrow states</span>
+      <span style="font-size: 14px; color: #6E7076;">What the requester sees, what the doer sees, and what the task row says — for every state of the machine in PRD §7.</span>
+    </div>
+    <span style="display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: 999px; background: #F6F6F7; border: 1px solid #ECECEE; font-size: 12.5px; color: #6E7076;">Build S7 from this board</span>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 150px repeat(3, minmax(0, 1fr)) 150px; gap: 0; align-items: stretch;">
+    <span style="font-size: 12.5px; font-weight: 600; color: #0B0B0C; padding: 0 0 12px;">State</span>
+    <span style="font-size: 12.5px; font-weight: 600; color: #0B0B0C; padding: 0 16px 12px;">Requester sees</span>
+    <span style="font-size: 12.5px; font-weight: 600; color: #0B0B0C; padding: 0 16px 12px;">Doer sees</span>
+    <span style="font-size: 12.5px; font-weight: 600; color: #0B0B0C; padding: 0 16px 12px;">Money is</span>
+    <span style="font-size: 12.5px; font-weight: 600; color: #0B0B0C; padding: 0 0 12px;">Leaves on</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; margin-top: -12px;">
+    <sc-for list="{{ rows }}" as="r" hint-placeholder-count="7">
+      <div style="display: grid; grid-template-columns: 150px repeat(3, minmax(0, 1fr)) 150px; gap: 0; align-items: center; padding: 13px 0; border-top: 1px solid #ECECEE;">
+        <span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #0B0B0C;">
+          <span style="{{ r.dot }}"></span>{{ r.state }}
+        </span>
+        <span style="font-size: 13.5px; color: #6E7076; padding: 0 16px;">{{ r.req }}</span>
+        <span style="font-size: 13.5px; color: #6E7076; padding: 0 16px;">{{ r.doer }}</span>
+        <span style="{{ r.moneyStyle }}">{{ r.money }}</span>
+        <span style="font-size: 13px; color: #6E7076;">{{ r.exit }}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid #ECECEE; display: flex; gap: 40px;">
+    <span style="font-size: 12.5px; color: #6E7076; line-height: 1.5;">Escrow is funded only after a doer is accepted, and released only from Closed.</span>
+    <span style="font-size: 12.5px; color: #6E7076; line-height: 1.5;">Disputed freezes the funds — ops can release, split or refund.</span>
+    <span style="font-size: 12.5px; color: #6E7076; line-height: 1.5;">Every transition writes an audit row. The platform's row is never the authority on whether money moved.</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1240,"height":560}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var dot = function (c) { return 'width:6px;height:6px;border-radius:999px;background:' + c + ';display:block;flex-shrink:0;'; };
+    var plain = 'font-size:13.5px;color:#6E7076;padding:0 16px;';
+    var money = 'font-size:13.5px;font-weight:500;color:#0E7C5A;padding:0 16px;font-variant-numeric:tabular-nums;';
+    return {
+      rows: [
+        { state: 'Open', dot: dot('#C8CACE'), req: 'Matching — 4 applicants', doer: 'In the feed, net payout shown', money: 'Not taken', moneyStyle: plain, exit: 'Doer accepted' },
+        { state: 'Matched', dot: dot('#C8CACE'), req: 'Pay to start', doer: 'Waiting on funding', money: 'Not taken', moneyStyle: plain, exit: 'Escrow funded' },
+        { state: 'In progress', dot: dot('#0E7C5A'), req: '₹250 held', doer: '₹205 on completion', money: 'Held', moneyStyle: money, exit: 'Work submitted' },
+        { state: 'Review', dot: dot('#9A9CA3'), req: '47 h to approve', doer: 'Awaiting approval', money: 'Held', moneyStyle: money, exit: 'Approve / 48 h' },
+        { state: 'Revision', dot: dot('#9A9CA3'), req: 'One change asked', doer: 'Change requested', money: 'Held', moneyStyle: money, exit: 'Resubmitted' },
+        { state: 'Disputed', dot: dot('#0B0B0C'), req: 'A person decides in 48 h', doer: 'Frozen, state your case', money: 'Frozen', moneyStyle: 'font-size:13.5px;font-weight:500;color:#0B0B0C;padding:0 16px;', exit: 'Ops decision' },
+        { state: 'Closed', dot: dot('#0E7C5A'), req: 'Released · rate them', doer: 'Paid within 24 h', money: 'Released', moneyStyle: money, exit: '—' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Delegate — design foundations</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+a{color:#0E7C5A;text-decoration:none}a:hover{color:#0A5E44}
+button{font-family:inherit}
+</style>
+</helmet>
+<div style="width: 1240px; height: 880px; box-sizing: border-box; background: #FFFFFF; padding: 44px 48px; display: flex; flex-direction: column; gap: 28px;">
+
+  <div style="display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: 22px; border-bottom: 1px solid #ECECEE;">
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <span style="font-size: 32px; font-weight: 600; letter-spacing: -1.1px; color: #0B0B0C;">Quiet</span>
+      <span style="font-size: 15px; color: #6E7076;">One typeface, one colour, a lot of air. The only colour in the app is your money.</span>
+    </div>
+    <div style="display: flex; gap: 10px;">
+      <span style="display: inline-flex; align-items: center; height: 32px; padding: 0 13px; border-radius: 999px; background: #F6F6F7; border: 1px solid #ECECEE; font-size: 13px; color: #6E7076;">Single source</span>
+      <span style="display: inline-flex; align-items: center; height: 32px; padding: 0 13px; border-radius: 999px; background: #F6F6F7; border: 1px solid #ECECEE; font-size: 13px; color: #6E7076;">390 × 844 base</span>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px; flex-grow: 1;">
+
+    <div style="display: flex; flex-direction: column; gap: 18px;">
+      <span style="font-size: 13px; font-weight: 600; color: #0B0B0C;">Colour</span>
+      <div style="display: flex; flex-direction: column;">
+        <sc-for list="{{ colors }}" as="c" hint-placeholder-count="6">
+          <div style="display: flex; align-items: center; gap: 14px; padding: 13px 0; border-bottom: 1px solid #ECECEE;">
+            <span style="{{ c.chip }}"></span>
+            <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-size: 14px; font-weight: 500; color: #0B0B0C;">{{ c.name }}</span>
+              <span style="font-size: 12.5px; color: #6E7076;">{{ c.use }}</span>
+            </div>
+            <span style="font-size: 12.5px; color: #6E7076; font-variant-numeric: tabular-nums;">{{ c.hex }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: #6E7076;">Green appears only where money is. A screen with no money on it has no colour at all — that is the rule that makes escrow impossible to miss.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 18px;">
+      <span style="font-size: 13px; font-weight: 600; color: #0B0B0C;">Type — Instrument Sans, three weights</span>
+      <div style="display: flex; flex-direction: column;">
+        <div style="padding: 14px 0; border-bottom: 1px solid #ECECEE; display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: 30px; font-weight: 600; letter-spacing: -1.1px; line-height: 1.12; color: #0B0B0C;">Your money is held,<br>not sent.</span>
+          <span style="font-size: 12.5px; color: #6E7076;">30/600, −1.1px — one per screen, never two</span>
+        </div>
+        <div style="padding: 14px 0; border-bottom: 1px solid #ECECEE; display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: 16px; font-weight: 500; color: #0B0B0C;">Call HDFC Ergo, log my claim</span>
+          <span style="font-size: 12.5px; color: #6E7076;">16/500 — task titles, rows</span>
+        </div>
+        <div style="padding: 14px 0; border-bottom: 1px solid #ECECEE; display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: 15px; line-height: 1.5; color: #6E7076;">Kiran is paid when you approve the claim number.</span>
+          <span style="font-size: 12.5px; color: #6E7076;">15/400 #6E7076 — body, 5.07:1</span>
+        </div>
+        <div style="padding: 14px 0; display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: 26px; font-weight: 600; letter-spacing: -1px; color: #0E7C5A; font-variant-numeric: tabular-nums;">₹12,450.00</span>
+          <span style="font-size: 12.5px; color: #6E7076;">tabular-nums on every figure — no mono face needed</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 18px;">
+      <span style="font-size: 13px; font-weight: 600; color: #0B0B0C;">Parts</span>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <button type="button" style="height: 54px; border: none; border-radius: 12px; background: #0B0B0C; color: #FFFFFF; font-size: 16px; font-weight: 600;">Primary — one per screen</button>
+        <button type="button" style="height: 48px; border: 1px solid #ECECEE; border-radius: 12px; background: #FFFFFF; color: #0B0B0C; font-size: 15px; font-weight: 500;">Secondary</button>
+        <div style="display: flex; gap: 10px;">
+          <span style="display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border-radius: 999px; background: #0B0B0C; color: #FFFFFF; font-size: 14px; font-weight: 500;">Start</span>
+          <span style="display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border-radius: 999px; background: #F6F6F7; border: 1px solid #ECECEE; color: #6E7076; font-size: 14px;">Chip</span>
+        </div>
+      </div>
+
+      <span style="font-size: 13px; font-weight: 600; color: #0B0B0C; margin-top: 4px;">Status — a dot and a word, never a badge</span>
+      <div style="display: flex; flex-direction: column; gap: 11px;">
+        <sc-for list="{{ states }}" as="s" hint-placeholder-count="4">
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: {{ s.color }};">
+            <span style="{{ s.dot }}"></span>{{ s.label }}
+          </span>
+        </sc-for>
+      </div>
+
+      <span style="font-size: 13px; font-weight: 600; color: #0B0B0C; margin-top: 4px;">The app inverts with the role</span>
+      <div style="display: flex; gap: 12px;">
+        <div style="flex-grow: 1; height: 86px; border-radius: 12px; border: 1px solid #ECECEE; background: #FFFFFF; padding: 12px; display: flex; flex-direction: column; justify-content: space-between;">
+          <span style="font-size: 13px; font-weight: 600; color: #0B0B0C;">Requester</span>
+          <span style="font-size: 12px; color: #6E7076;">White. Spending, daytime.</span>
+        </div>
+        <div style="flex-grow: 1; height: 86px; border-radius: 12px; background: #0B0B0C; padding: 12px; display: flex; flex-direction: column; justify-content: space-between;">
+          <span style="font-size: 13px; font-weight: 600; color: #F6F6F7;">Doer</span>
+          <span style="font-size: 12px; color: #9A9CA3;">Ink. Earning, late.</span>
+        </div>
+      </div>
+      <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: #6E7076;">Same components, inverted ground. Targets stay ≥44px; body text stays ≥4.5:1 on whichever ground it sits on.</p>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1240,"height":880}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var chip = function (bg, bd) {
+      return 'width:36px;height:36px;flex-shrink:0;border-radius:10px;background:' + bg + ';border:1px solid ' + (bd || '#ECECEE') + ';';
+    };
+    var dot = function (c) {
+      return 'width:6px;height:6px;border-radius:999px;background:' + c + ';display:block;';
+    };
+    return {
+      colors: [
+        { name: 'Ink', use: 'Text, primary actions', hex: '#0B0B0C', chip: chip('#0B0B0C', '#0B0B0C') },
+        { name: 'Held', use: 'Money, and nothing else', hex: '#0E7C5A', chip: chip('#0E7C5A', '#0E7C5A') },
+        { name: 'Body', use: 'Secondary text, labels', hex: '#6E7076', chip: chip('#6E7076', '#6E7076') },
+        { name: 'Rest', use: 'Hairlines, dividers', hex: '#ECECEE', chip: chip('#ECECEE') },
+        { name: 'Fill', use: 'Grouped reassurance blocks', hex: '#F6F6F7', chip: chip('#F6F6F7') },
+        { name: 'Ring', use: 'Empty steps, dots — never text', hex: '#C8CACE', chip: chip('#C8CACE') }
+      ],
+      states: [
+        { label: 'Held in escrow', color: '#0E7C5A', dot: dot('#0E7C5A') },
+        { label: 'Waiting on you', color: '#6E7076', dot: dot('#9A9CA3') },
+        { label: 'Matching', color: '#6E7076', dot: dot('#C8CACE') },
+        { label: 'Frozen — disputed', color: '#0B0B0C', dot: dot('#0B0B0C') }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

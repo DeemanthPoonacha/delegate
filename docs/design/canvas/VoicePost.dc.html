@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post by voice</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+a{color:#0E7C5A;text-decoration:none}a:hover{color:#0A5E44}
+button{font-family:inherit;cursor:pointer}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFFFFF; display: flex; flex-direction: column; padding: 52px 24px 24px;">
+
+  <span style="display: inline-flex; align-self: flex-start; align-items: center; height: 26px; padding: 0 10px; border-radius: 999px; background: #F6F6F7; border: 1px solid #ECECEE; font-size: 12px; color: #6E7076;">Phase 4+</span>
+
+  <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; gap: 26px; padding-bottom: 20px;">
+    <h1 style="margin: 0; font-size: 30px; font-weight: 600; line-height: 1.12; letter-spacing: -1.1px; color: #0B0B0C;">Just say it.</h1>
+
+    <div style="display: flex; align-items: center; gap: 4px; height: 56px;">
+      <sc-for list="{{ bars }}" as="b" hint-placeholder-count="28">
+        <span style="{{ b.style }}"></span>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 14px; padding: 18px; background: #F6F6F7; border-radius: 14px;">
+      <span style="font-size: 12.5px; font-weight: 500; color: #6E7076;">We heard</span>
+      <p style="margin: 0; font-size: 17px; font-weight: 500; line-height: 1.4; letter-spacing: -0.2px; color: #0B0B0C;">"Someone needs to call Star Health and log my claim, I've got the policy number, need it done today"</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column;">
+      <sc-for list="{{ parsed }}" as="p" hint-placeholder-count="4">
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid #ECECEE;">
+          <span style="font-size: 14px; color: #6E7076;">{{ p.label }}</span>
+          <span style="font-size: 15px; font-weight: 500; color: #0B0B0C; font-variant-numeric: tabular-nums;">{{ p.value }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 12px;">
+    <a href="Post.dc.html" style="height: 54px; border-radius: 12px; background: #0B0B0C; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600;">Looks right — post it</a>
+    <p style="margin: 0; text-align: center; font-size: 13px; color: #6E7076;">Nine seconds instead of ninety.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var heights = [14, 26, 38, 22, 48, 30, 18, 42, 52, 34, 20, 44, 28, 16, 36, 50, 24, 40, 30, 18, 46, 26, 14, 32, 22, 12, 10, 8];
+    return {
+      bars: heights.map(function (h, i) {
+        return { style: 'flex-grow:1;height:' + h + 'px;border-radius:999px;background:' + (i < 22 ? '#0B0B0C' : '#ECECEE') + ';display:block;' };
+      }),
+      parsed: [
+        { label: 'Category', value: 'Insurance & claims' },
+        { label: 'You get back', value: 'A claim number' },
+        { label: 'By', value: 'Today, 6:00 pm' },
+        { label: 'Suggested price', value: '₹250' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Verify your identity</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+a{color:#0E7C5A;text-decoration:none}a:hover{color:#0A5E44}
+button{font-family:inherit;cursor:pointer}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFFFFF; display: flex; flex-direction: column; padding: 52px 0 0;">
+
+  <div style="padding: 0 14px;">
+    <a href="Profile.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #0B0B0C;">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>
+    </a>
+  </div>
+
+  <div style="flex-grow: 1; overflow: hidden; padding: 6px 24px 0; display: flex; flex-direction: column; gap: 22px;">
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <h1 style="margin: 0; font-size: 30px; font-weight: 600; line-height: 1.12; letter-spacing: -1.1px; color: #0B0B0C;">Three checks,<br>about four minutes.</h1>
+      <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #6E7076;">Requesters are handing strangers their paperwork. This is what makes them willing to.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+        <div style="display: flex; align-items: flex-start; gap: 14px; padding: 18px 0; border-bottom: 1px solid #ECECEE;">
+          <span style="{{ s.mark }}">{{ s.markText }}</span>
+          <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 3px;">
+            <span style="font-size: 16px; font-weight: 500; color: #0B0B0C;">{{ s.title }}</span>
+            <span style="font-size: 13px; line-height: 1.45; color: #6E7076;">{{ s.detail }}</span>
+          </div>
+          <span style="{{ s.stateStyle }}">{{ s.state }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 14px; background: #F6F6F7; border-radius: 14px; padding: 18px;">
+      <div style="display: flex; align-items: flex-start; gap: 12px;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6E7076" stroke-width="1.8" stroke-linecap="round" style="flex-shrink: 0; margin-top: 1px;"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span style="font-size: 13.5px; line-height: 1.5; color: #6E7076;">Your documents are encrypted and never shown to requesters. They see your name, your badge and your history — nothing else.</span>
+      </div>
+      <div style="display: flex; align-items: flex-start; gap: 12px;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6E7076" stroke-width="1.8" stroke-linecap="round" style="flex-shrink: 0; margin-top: 1px;"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <span style="font-size: 13.5px; line-height: 1.5; color: #6E7076;">We use DigiLocker, not Aadhaar authentication. PAN is required before you can be paid.</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 16px 24px 24px; display: flex; flex-direction: column; gap: 12px;">
+    <a href="KycPending.dc.html" style="height: 54px; border-radius: 12px; background: #0B0B0C; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600;">Open DigiLocker</a>
+    <p style="margin: 0; text-align: center; font-size: 13px; color: #6E7076;">You can browse tasks now and finish this before your first one.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var done = 'width:26px;height:26px;flex-shrink:0;border-radius:999px;background:#0E7C5A;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;';
+    var now = 'width:26px;height:26px;flex-shrink:0;border-radius:999px;background:#0B0B0C;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;';
+    var next = 'width:26px;height:26px;flex-shrink:0;border-radius:999px;border:1.5px solid #C8CACE;color:#9A9CA3;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;box-sizing:border-box;';
+    var tagDone = 'font-size:13px;font-weight:500;color:#0E7C5A;';
+    var tagNext = 'font-size:13px;color:#6E7076;';
+    return {
+      steps: [
+        { markText: '1', mark: done, title: 'Government ID', detail: 'Through DigiLocker — name matched to your profile', state: 'Done', stateStyle: tagDone },
+        { markText: '2', mark: now, title: 'PAN', detail: 'Required before any payout can reach you', state: 'Now', stateStyle: 'font-size:13px;font-weight:500;color:#0B0B0C;' },
+        { markText: '3', mark: next, title: 'Bank account', detail: 'A ₹1 test deposit confirms the name matches', state: '2 min', stateStyle: tagNext }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -11,7 +11,7 @@
 * **Screen ID:** `98576c555c0e42bb86c988cde460231b`
 * **Title:** Delegate - Requester Home
 * **Target Device:** Mobile (Expo / React Native)
-* **Backlog Traceability:** [S1-12 (Role toggle)](../backlog/sprint-01-tickets.md), [S3-01 (Task posting flow)](../backlog/sprint-03-tickets.md)
+* **Backlog Traceability:** [S1-12 (Role toggle)](../backlog/sprint-01-tickets.md), [S3 (Task posting flow)](../backlog/sprints.md)
 * **Screenshot Preview:** [View Screenshot](https://lh3.googleusercontent.com/aida/AEtjO1VGNfeH-e-2pb64ILJytmE0UVJqmOVIpKzVHgVuClajuDZGXZVkNw2OJnLtXAe4YxcFlacXMFUodW858fZQxrLj7kPP6EZHw9D1KgXFvv613LsH4uFppTmCquRQe_In8s8eQU1MgNjbGP6c8jo7NLcd-XAOgiYHguOTQTKLVYwqW0ovzKP11Hdh9_gn6qcF7GWjecNHazdvvg1kuTYqOYU_oa6XepJb5uUaZViO05r1SVyVQgmBw-ch5A)
 
 ![View Screenshot](https://lh3.googleusercontent.com/aida/AEtjO1VGNfeH-e-2pb64ILJytmE0UVJqmOVIpKzVHgVuClajuDZGXZVkNw2OJnLtXAe4YxcFlacXMFUodW858fZQxrLj7kPP6EZHw9D1KgXFvv613LsH4uFppTmCquRQe_In8s8eQU1MgNjbGP6c8jo7NLcd-XAOgiYHguOTQTKLVYwqW0ovzKP11Hdh9_gn6qcF7GWjecNHazdvvg1kuTYqOYU_oa6XepJb5uUaZViO05r1SVyVQgmBw-ch5A)

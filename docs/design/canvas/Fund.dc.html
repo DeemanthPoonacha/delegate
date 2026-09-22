@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hold the money in escrow</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+a{color:#0E7C5A;text-decoration:none}a:hover{color:#0A5E44}
+button{font-family:inherit;cursor:pointer}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFFFFF; display: flex; flex-direction: column; padding: 52px 0 0;">
+
+  <div style="padding: 0 14px;">
+    <a href="Applicants.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #0B0B0C;">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>
+    </a>
+  </div>
+
+  <div style="flex-grow: 1; overflow: hidden; padding: 6px 24px 0; display: flex; flex-direction: column;">
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <span style="display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 500; color: #0E7C5A;">
+        <span style="width: 6px; height: 6px; border-radius: 999px; background: #0E7C5A; display: block;"></span>Escrow
+      </span>
+      <h1 style="margin: 0; font-size: 30px; font-weight: 600; line-height: 1.12; letter-spacing: -1.1px; color: #0B0B0C;">Your money is held,<br>not sent.</h1>
+      <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #6E7076;">Faisal is paid when you approve the claim number. If he never delivers, you get every rupee back.</p>
+    </div>
+
+    <div style="padding: 24px 0 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ECECEE;">
+      <span style="font-size: 15px; color: #6E7076;">Task price</span>
+      <span style="font-size: 15px; font-weight: 500; color: #0B0B0C; font-variant-numeric: tabular-nums;">₹250.00</span>
+    </div>
+    <div style="padding: 20px 0; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ECECEE;">
+      <div style="display: flex; flex-direction: column; gap: 3px;">
+        <span style="font-size: 15px; color: #6E7076;">Booking fee</span>
+        <span style="font-size: 12.5px; color: #6E7076;">Our cut comes out of the doer's payout</span>
+      </div>
+      <span style="font-size: 15px; font-weight: 500; color: #0B0B0C;">None</span>
+    </div>
+    <div style="padding: 22px 0 26px; display: flex; align-items: baseline; justify-content: space-between;">
+      <span style="font-size: 16px; font-weight: 600; color: #0B0B0C;">You hold today</span>
+      <span style="font-size: 32px; font-weight: 600; letter-spacing: -1.2px; color: #0E7C5A; font-variant-numeric: tabular-nums;">₹250.00</span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 18px; background: #F6F6F7; border-radius: 14px; padding: 20px;">
+      <sc-for list="{{ promises }}" as="p" hint-placeholder-count="3">
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+          <span style="{{ p.mark }}">
+            <sc-if value="{{ p.done }}" hint-placeholder-val="{{ true }}">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </sc-if>
+          </span>
+          <div style="display: flex; flex-direction: column; gap: 3px;">
+            <span style="font-size: 15px; font-weight: 500; color: #0B0B0C;">{{ p.title }}</span>
+            <span style="font-size: 13px; line-height: 1.45; color: #6E7076;">{{ p.detail }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <button type="button" style="margin-top: 22px; background: transparent; border: none; border-bottom: 1px solid #ECECEE; padding: 0 0 20px; display: flex; align-items: center; gap: 14px; text-align: left;">
+      <span style="width: 32px; height: 32px; border-radius: 9px; background: #F6F6F7; border: 1px solid #ECECEE; color: #0B0B0C; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600;">UPI</span>
+      <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;">
+        <span style="font-size: 15px; font-weight: 500; color: #0B0B0C;">rohit@okhdfcbank</span>
+        <span style="font-size: 13px; color: #6E7076;">One tap in your UPI app</span>
+      </span>
+      <span style="font-size: 14px; font-weight: 500; color: #6E7076;">Change</span>
+    </button>
+  </div>
+
+  <div style="padding: 16px 24px 24px; display: flex; flex-direction: column; gap: 12px;">
+    <a href="TaskRoom.dc.html" style="height: 54px; border-radius: 12px; background: #0B0B0C; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600;">Hold ₹250 in escrow</a>
+    <p style="margin: 0; text-align: center; font-size: 13px; color: #6E7076;">Cancel free until Faisal starts.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var done = 'width:18px;height:18px;border-radius:999px;background:#0E7C5A;color:#FFFFFF;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;';
+    var todo = 'width:18px;height:18px;border-radius:999px;border:1.5px solid #C8CACE;display:block;flex-shrink:0;margin-top:1px;box-sizing:border-box;';
+    return {
+      promises: [
+        { done: true, mark: done, title: 'Held by our escrow partner', detail: 'Never in a Delegate account.' },
+        { done: false, mark: todo, title: 'Released when you approve', detail: 'Or automatically after 48 hours.' },
+        { done: false, mark: todo, title: 'Frozen the moment you dispute', detail: 'A person decides within 48 hours.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
