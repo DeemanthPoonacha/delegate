@@ -10,42 +10,43 @@
 <helmet>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
 <style>
-body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;background:#FFFFFF;-webkit-font-smoothing:antialiased}
-a{color:#0E7C5A;text-decoration:none}a:hover{color:#0A5E44}
-button{font-family:inherit}
-input{font-family:inherit}
-input::placeholder{color:#9A9CA3}
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;--bg:#FFFFFF;--surface:#F6F6F7;--line:#ECECEE;--text:#0B0B0C;--body:#6E7076;--faint:#9A9CA3;--money:#0E7C5A;--money-hi:#0A5E44;--accent:#0B0B0C;--on-accent:#FFFFFF;--on-money:#FFFFFF;}
+a{color:var(--money);text-decoration:none}a:hover{color:var(--money-hi)}
+button{font-family:inherit;cursor:pointer}
+input,textarea{font-family:inherit}
+input::placeholder,textarea::placeholder{color:var(--faint)}
 </style>
 </helmet>
-<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFFFFF; display: flex; flex-direction: column; padding: 60px 24px 24px;">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: var(--bg); display: flex; flex-direction: column; padding: 52px 24px 24px; {{ vars }}">
 
-  <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.5px; color: #0B0B0C;">Delegate</span>
+  <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.5px; color: var(--text);">Delegate</span>
 
   <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; gap: 28px; padding-bottom: 40px;">
     <div style="display: flex; flex-direction: column; gap: 12px;">
-      <h1 style="margin: 0; font-size: 30px; font-weight: 600; line-height: 1.12; letter-spacing: -1.1px; color: #0B0B0C;">What's your<br>number?</h1>
-      <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #6E7076;">One account. Post a task or do one — you choose later, and you can switch any time.</p>
+      <h1 style="margin: 0; font-size: 28px; font-weight: 600; line-height: 1.12; letter-spacing: -1px; color: var(--text);">What's your<br>number?</h1>
+      <p style="margin: 0; font-size: 15px; line-height: 1.5; color: var(--body);">One account. Post a task or do one — you choose later, and you can switch any time.</p>
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 10px;">
-      <label for="phone" style="font-size: 13px; font-weight: 500; color: #6E7076;">Mobile number</label>
-      <div style="display: flex; align-items: center; gap: 12px; padding-bottom: 14px; border-bottom: 1.5px solid #0B0B0C;">
-        <span style="font-size: 20px; font-weight: 500; color: #6E7076; font-variant-numeric: tabular-nums;">+91</span>
-        <input id="phone" type="tel" inputmode="numeric" value="98450 41207" style="flex-grow: 1; border: none; outline: none; background: transparent; font-size: 20px; font-weight: 500; color: #0B0B0C; letter-spacing: 0.5px; font-variant-numeric: tabular-nums; padding: 0;">
+      <label for="phone" style="font-size: 13px; font-weight: 500; color: var(--body);">Mobile number</label>
+      <div style="display: flex; align-items: center; gap: 12px; padding-bottom: 14px; border-bottom: 1.5px solid var(--text);">
+        <span style="font-size: 20px; font-weight: 500; color: var(--body); font-variant-numeric: tabular-nums;">+91</span>
+        <input id="phone" type="tel" inputmode="numeric" value="98450 41207" style="flex-grow: 1; border: none; outline: none; background: transparent; font-size: 20px; font-weight: 500; color: var(--text); letter-spacing: 0.5px; font-variant-numeric: tabular-nums; padding: 0;">
       </div>
-      <span style="font-size: 13px; color: #6E7076;">We'll text you a six-digit code.</span>
+      <span style="font-size: 13px; color: var(--body);">We'll text you a six-digit code.</span>
     </div>
   </div>
 
   <div style="display: flex; flex-direction: column; gap: 16px;">
-    <a href="Otp.dc.html" style="height: 54px; border-radius: 12px; background: #0B0B0C; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600;">Continue</a>
-    <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: #6E7076; text-align: center;">By continuing you agree to the <a href="#terms">terms</a> and the <a href="#privacy">privacy notice</a>, which says what we collect and why.</p>
+    <a href="Otp.dc.html" style="height: 54px; border-radius: 12px; background: var(--accent); color: var(--on-accent); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600;">Continue</a>
+    <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: var(--body); text-align: center;">By continuing you agree to the <a href="#terms">terms</a> and the <a href="#privacy">privacy notice</a>, which says what we collect and why.</p>
   </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light","section":"Theme"},"$preview":{"width":390,"height":844}}'>
+var DARK = '--bg:#0B0B0C;--surface:#17181B;--line:#26282D;--text:#F6F6F7;--body:#9A9CA3;--faint:#6E7076;--money:#3FBF8F;--money-hi:#5FD3A6;--accent:#F6F6F7;--on-accent:#0B0B0C;--on-money:#05130C;';
 class Component extends DCLogic {
-  renderVals() { return {}; }
+  renderVals() { return { vars: this.props.theme === 'dark' ? DARK : '' }; }
 }
 </script>
 </body>

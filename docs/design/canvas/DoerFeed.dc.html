@@ -10,22 +10,24 @@
 <helmet>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
 <style>
-body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;background:#0B0B0C;-webkit-font-smoothing:antialiased}
-a{color:#3FBF8F;text-decoration:none}a:hover{color:#5FD3A6}
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;--bg:#FFFFFF;--surface:#F6F6F7;--line:#ECECEE;--text:#0B0B0C;--body:#6E7076;--faint:#9A9CA3;--money:#0E7C5A;--money-hi:#0A5E44;--accent:#0B0B0C;--on-accent:#FFFFFF;--on-money:#FFFFFF;}
+a{color:var(--money);text-decoration:none}a:hover{color:var(--money-hi)}
 button{font-family:inherit;cursor:pointer}
+input,textarea{font-family:inherit}
+input::placeholder,textarea::placeholder{color:var(--faint)}
 </style>
 </helmet>
-<div style="width: 390px; height: 844px; box-sizing: border-box; background: #0B0B0C; display: flex; flex-direction: column; padding: 52px 0 0;">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: var(--bg); display: flex; flex-direction: column; padding: 52px 0 0; {{ vars }}">
 
   <div style="padding: 0 14px; display: flex; align-items: center; justify-content: space-between;">
-    <a href="HomeDoer.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #F6F6F7;">
+    <a href="HomeDoer.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: var(--text);">
       <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>
     </a>
-    <button type="button" style="margin-right: 14px; height: 36px; padding: 0 14px; border-radius: 999px; background: #17181B; border: 1px solid #26282D; color: #F6F6F7; font-size: 13.5px; font-weight: 500;">Filters</button>
+    <button type="button" style="margin-right: 14px; height: 36px; padding: 0 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--text); font-size: 13.5px; font-weight: 500;">Filters</button>
   </div>
 
   <div style="padding: 6px 24px 16px; display: flex; flex-direction: column; gap: 14px;">
-    <h1 style="margin: 0; font-size: 27px; font-weight: 600; line-height: 1.12; letter-spacing: -1px; color: #F6F6F7;">Matched to you</h1>
+    <h1 style="margin: 0; font-size: 28px; font-weight: 600; line-height: 1.12; letter-spacing: -1px; color: var(--text);">Matched to you</h1>
     <div style="display: flex; gap: 8px;">
       <sc-for list="{{ chips }}" as="c" hint-placeholder-count="3">
         <span style="{{ c.style }}">{{ c.label }}</span>
@@ -35,42 +37,44 @@ button{font-family:inherit;cursor:pointer}
 
   <div style="flex-grow: 1; overflow: hidden; padding: 0 24px; display: flex; flex-direction: column;">
     <sc-for list="{{ feed }}" as="t" hint-placeholder-count="4">
-      <a href="TaskRoom.dc.html" style="padding: 18px 0; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid #26282D;">
+      <a href="TaskRoom.dc.html" style="padding: 18px 0; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid var(--line);">
         <div style="display: flex; align-items: flex-start; gap: 16px;">
-          <span style="flex-grow: 1; font-size: 16px; font-weight: 500; line-height: 1.35; color: #F6F6F7;">{{ t.title }}</span>
+          <span style="flex-grow: 1; font-size: 16px; font-weight: 500; line-height: 1.35; color: var(--text);">{{ t.title }}</span>
           <div style="display: flex; flex-direction: column; align-items: flex-end;">
-            <span style="font-size: 18px; font-weight: 600; color: #F6F6F7; font-variant-numeric: tabular-nums;">{{ t.net }}</span>
-            <span style="font-size: 12px; color: #9A9CA3;">you keep of {{ t.gross }}</span>
+            <span style="font-size: 18px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums;">{{ t.net }}</span>
+            <span style="font-size: 12px; color: var(--body);">you keep of {{ t.gross }}</span>
           </div>
         </div>
         <div style="display: flex; align-items: center; gap: 14px;">
           <span style="{{ t.tagStyle }}">{{ t.tag }}</span>
-          <span style="font-size: 13px; color: #9A9CA3;">{{ t.time }}</span>
-          <span style="font-size: 13px; color: #9A9CA3;">{{ t.where }}</span>
+          <span style="font-size: 13px; color: var(--body);">{{ t.time }}</span>
+          <span style="font-size: 13px; color: var(--body);">{{ t.where }}</span>
           <span style="flex-grow: 1;"></span>
-          <span style="font-size: 12.5px; color: #3FBF8F;">{{ t.posted }}</span>
+          <span style="font-size: 12.5px; color: var(--money);">{{ t.posted }}</span>
         </div>
       </a>
     </sc-for>
   </div>
 
-  <div style="padding: 14px 24px 24px; border-top: 1px solid #26282D; display: flex; align-items: center; justify-content: space-between;">
+  <div style="padding: 14px 24px 24px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between;">
     <div style="display: flex; flex-direction: column; gap: 2px;">
-      <span style="font-size: 12.5px; color: #9A9CA3;">Your floor</span>
-      <span style="font-size: 15px; font-weight: 500; color: #F6F6F7; font-variant-numeric: tabular-nums;">₹200 / hour</span>
+      <span style="font-size: 12.5px; color: var(--body);">Your floor</span>
+      <span style="font-size: 15px; font-weight: 500; color: var(--text); font-variant-numeric: tabular-nums;">₹200 / hour</span>
     </div>
-    <button type="button" style="height: 44px; padding: 0 16px; border-radius: 12px; background: #17181B; border: 1px solid #26282D; color: #F6F6F7; font-size: 14px; font-weight: 500;">Adjust</button>
+    <button type="button" style="height: 44px; padding: 0 16px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); color: var(--text); font-size: 14px; font-weight: 500;">Adjust</button>
   </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light","section":"Theme"},"$preview":{"width":390,"height":844}}'>
+var DARK = '--bg:#0B0B0C;--surface:#17181B;--line:#26282D;--text:#F6F6F7;--body:#9A9CA3;--faint:#6E7076;--money:#3FBF8F;--money-hi:#5FD3A6;--accent:#F6F6F7;--on-accent:#0B0B0C;--on-money:#05130C;';
 class Component extends DCLogic {
   renderVals() {
-    var on = 'display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:999px;background:#F6F6F7;color:#0B0B0C;font-size:13px;font-weight:500;';
-    var off = 'display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:999px;background:#17181B;border:1px solid #26282D;color:#9A9CA3;font-size:13px;';
-    var tagStrong = 'display:inline-flex;align-items:center;height:24px;padding:0 9px;border-radius:999px;background:#17181B;border:1px solid #3A3D44;color:#F6F6F7;font-size:12px;font-weight:500;';
-    var tagPlain = 'display:inline-flex;align-items:center;height:24px;padding:0 9px;border-radius:999px;background:#17181B;color:#9A9CA3;font-size:12px;';
+    var on = 'display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:13px;font-weight:500;';
+    var off = 'display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--body);font-size:13px;';
+    var tagStrong = 'display:inline-flex;align-items:center;height:24px;padding:0 9px;border-radius:999px;background:var(--surface);border:1px solid var(--faint);color:var(--text);font-size:12px;font-weight:500;';
+    var tagPlain = 'display:inline-flex;align-items:center;height:24px;padding:0 9px;border-radius:999px;background:var(--surface);color:var(--body);font-size:12px;';
     return {
+      vars: this.props.theme === 'dark' ? DARK : '',
       chips: [
         { label: 'Insurance', style: on }, { label: 'Paperwork', style: on }, { label: '≥ ₹200/hr', style: off }
       ],

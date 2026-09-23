@@ -10,84 +10,88 @@
 <helmet>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
 <style>
-body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;background:#0B0B0C;-webkit-font-smoothing:antialiased}
-a{color:#3FBF8F;text-decoration:none}a:hover{color:#5FD3A6}
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;--bg:#FFFFFF;--surface:#F6F6F7;--line:#ECECEE;--text:#0B0B0C;--body:#6E7076;--faint:#9A9CA3;--money:#0E7C5A;--money-hi:#0A5E44;--accent:#0B0B0C;--on-accent:#FFFFFF;--on-money:#FFFFFF;}
+a{color:var(--money);text-decoration:none}a:hover{color:var(--money-hi)}
 button{font-family:inherit;cursor:pointer}
+input,textarea{font-family:inherit}
+input::placeholder,textarea::placeholder{color:var(--faint)}
 </style>
 </helmet>
-<div style="width: 390px; height: 844px; box-sizing: border-box; background: #0B0B0C; display: flex; flex-direction: column; padding: 54px 0 0;">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: var(--bg); display: flex; flex-direction: column; padding: 52px 0 0; {{ vars }}">
 
   <div style="padding: 0 24px 20px; display: flex; align-items: center; justify-content: space-between;">
-    <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.5px; color: #F6F6F7;">Delegate</span>
-    <span style="width: 32px; height: 32px; border-radius: 999px; background: #17181B; border: 1px solid #26282D; color: #F6F6F7; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500;">M</span>
+    <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.5px; color: var(--text);">Delegate</span>
+    <span style="width: 32px; height: 32px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--text); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500;">M</span>
   </div>
 
-  <div style="padding: 0 24px; display: flex; gap: 22px; border-bottom: 1px solid #26282D;">
-    <a href="HomeRequester.dc.html" style="font-size: 15px; font-weight: 500; color: #9A9CA3; padding-bottom: 12px;">Get help</a>
-    <a href="HomeDoer.dc.html" style="font-size: 15px; font-weight: 600; color: #F6F6F7; padding-bottom: 12px; border-bottom: 2px solid #F6F6F7;">Earn</a>
+  <div style="padding: 0 24px; display: flex; gap: 22px; border-bottom: 1px solid var(--line);">
+    <a href="HomeRequester.dc.html" style="font-size: 15px; font-weight: 500; color: var(--body); padding-bottom: 12px;">Get help</a>
+    <a href="HomeDoer.dc.html" style="font-size: 15px; font-weight: 600; color: var(--text); padding-bottom: 12px; border-bottom: 2px solid var(--text);">Earn</a>
   </div>
 
   <div style="flex-grow: 1; overflow: hidden; padding: 0 24px; display: flex; flex-direction: column;">
 
-    <div style="padding: 26px 0 24px; display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid #26282D;">
-      <span style="font-size: 13px; font-weight: 500; color: #9A9CA3;">Earned this week</span>
+    <div style="padding: 26px 0 24px; display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid var(--line);">
+      <span style="font-size: 13px; font-weight: 500; color: var(--body);">Earned this week</span>
       <div style="display: flex; align-items: baseline; gap: 12px;">
-        <span style="font-size: 36px; font-weight: 600; letter-spacing: -1.4px; color: #F6F6F7; font-variant-numeric: tabular-nums;">₹1,845</span>
-        <span style="font-size: 14px; font-weight: 500; color: #3FBF8F; font-variant-numeric: tabular-nums;">+₹410 clearing</span>
+        <span style="font-size: 36px; font-weight: 600; letter-spacing: -1.4px; color: var(--text); font-variant-numeric: tabular-nums;">₹1,845</span>
+        <span style="font-size: 14px; font-weight: 500; color: var(--money); font-variant-numeric: tabular-nums;">+₹410 clearing</span>
       </div>
-      <span style="font-size: 13.5px; color: #9A9CA3;">Paid within 24 hours of approval.</span>
+      <span style="font-size: 13.5px; color: var(--body);">Paid within 24 hours of approval.</span>
     </div>
 
-    <a href="DoerFeed.dc.html" style="margin: 22px 0 0; height: 54px; border-radius: 12px; background: #F6F6F7; color: #0B0B0C; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; font-size: 16px; font-weight: 600;">
+    <a href="DoerFeed.dc.html" style="margin: 22px 0 0; height: 54px; border-radius: 12px; background: var(--accent); color: var(--on-accent); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; font-size: 16px; font-weight: 600;">
       <span>4 tasks match you</span>
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
 
-    <span style="padding: 26px 0 4px; font-size: 13px; font-weight: 500; color: #9A9CA3;">In progress</span>
+    <span style="padding: 26px 0 4px; font-size: 13px; font-weight: 500; color: var(--body);">In progress</span>
 
     <sc-for list="{{ jobs }}" as="j" hint-placeholder-count="2">
-      <a href="TaskRoom.dc.html" style="padding: 18px 0; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid #26282D;">
+      <a href="TaskRoom.dc.html" style="padding: 18px 0; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid var(--line);">
         <div style="display: flex; align-items: flex-start; gap: 16px;">
-          <span style="flex-grow: 1; font-size: 16px; font-weight: 500; line-height: 1.35; color: #F6F6F7;">{{ j.title }}</span>
+          <span style="flex-grow: 1; font-size: 16px; font-weight: 500; line-height: 1.35; color: var(--text);">{{ j.title }}</span>
           <div style="display: flex; flex-direction: column; align-items: flex-end;">
-            <span style="font-size: 16px; font-weight: 600; color: #F6F6F7; font-variant-numeric: tabular-nums;">{{ j.net }}</span>
-            <span style="font-size: 12px; color: #9A9CA3;">you keep</span>
+            <span style="font-size: 16px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums;">{{ j.net }}</span>
+            <span style="font-size: 12px; color: var(--body);">you keep</span>
           </div>
         </div>
         <div style="display: flex; align-items: center; gap: 14px;">
           <span style="{{ j.stateStyle }}"><span style="{{ j.dot }}"></span>{{ j.state }}</span>
-          <span style="font-size: 13px; color: #9A9CA3;">{{ j.meta }}</span>
+          <span style="font-size: 13px; color: var(--body);">{{ j.meta }}</span>
         </div>
       </a>
     </sc-for>
 
     <div style="padding: 24px 0 0; display: flex; align-items: center; gap: 10px;">
-      <span style="width: 18px; height: 18px; flex-shrink: 0; border-radius: 999px; background: #3FBF8F; color: #0B0B0C; display: flex; align-items: center; justify-content: center;">
+      <span style="width: 18px; height: 18px; flex-shrink: 0; border-radius: 999px; background: var(--money); color: var(--on-money); display: flex; align-items: center; justify-content: center;">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
       </span>
-      <span style="font-size: 13.5px; color: #9A9CA3;">Verified · you can take sensitive work</span>
+      <span style="font-size: 13.5px; color: var(--body);">Verified · you can take sensitive work</span>
     </div>
   </div>
 
-  <nav style="height: 72px; box-sizing: border-box; border-top: 1px solid #26282D; display: flex; align-items: center; justify-content: space-around; padding: 0 12px 8px;">
-    <a href="HomeDoer.dc.html" style="width: 62px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: #F6F6F7;">Home</a>
-    <a href="DoerFeed.dc.html" style="width: 62px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #9A9CA3;">Find</a>
-    <a href="TaskRoom.dc.html" style="width: 62px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #9A9CA3;">Chat</a>
-    <a href="Earnings.dc.html" style="width: 62px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #9A9CA3;">Money</a>
-    <a href="Kyc.dc.html" style="width: 62px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #9A9CA3;">You</a>
+  <nav style="height: 72px; box-sizing: border-box; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-around; padding: 0 12px 8px;">
+    <a href="HomeDoer.dc.html" style="width: 62px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: var(--text);">Home</a>
+    <a href="DoerFeed.dc.html" style="width: 62px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--body);">Find</a>
+    <a href="TaskRoom.dc.html" style="width: 62px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--body);">Chat</a>
+    <a href="Earnings.dc.html" style="width: 62px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--body);">Money</a>
+    <a href="Kyc.dc.html" style="width: 62px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--body);">You</a>
   </nav>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light","section":"Theme"},"$preview":{"width":390,"height":844}}'>
+var DARK = '--bg:#0B0B0C;--surface:#17181B;--line:#26282D;--text:#F6F6F7;--body:#9A9CA3;--faint:#6E7076;--money:#3FBF8F;--money-hi:#5FD3A6;--accent:#F6F6F7;--on-accent:#0B0B0C;--on-money:#05130C;';
 class Component extends DCLogic {
   renderVals() {
     var dot = function (c) { return 'width:6px;height:6px;border-radius:999px;background:' + c + ';display:block;'; };
-    var held = 'display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#3FBF8F;';
-    var grey = 'display:flex;align-items:center;gap:6px;font-size:13px;color:#9A9CA3;';
+    var held = 'display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--money);';
+    var grey = 'display:flex;align-items:center;gap:6px;font-size:13px;color:var(--body);';
     return {
+      vars: this.props.theme === 'dark' ? DARK : '',
       jobs: [
-        { title: 'Call 15 flat listings, filter out brokers', net: '₹409', state: 'Escrow held', stateStyle: held, dot: dot('#3FBF8F'), meta: 'due tomorrow 2pm' },
-        { title: 'Compare 4 sites for a washing machine', net: '₹205', state: 'Awaiting approval', stateStyle: grey, dot: dot('#6E7076'), meta: 'delivered 20m ago' }
+        { title: 'Call 15 flat listings, filter out brokers', net: '₹409', state: 'Escrow held', stateStyle: held, dot: dot('var(--money)'), meta: 'due tomorrow 2pm' },
+        { title: 'Compare 4 sites for a washing machine', net: '₹205', state: 'Awaiting approval', stateStyle: grey, dot: dot('var(--faint)'), meta: 'delivered 20m ago' }
       ]
     };
   }

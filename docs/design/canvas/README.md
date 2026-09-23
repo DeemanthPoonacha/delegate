@@ -11,21 +11,55 @@ inside the canvas editor; locally they are inert.
 
 ## The system — "Quiet"
 
-One typeface (Instrument Sans), one colour (`#0E7C5A`), hairline dividers, no cards.
-**The only colour in the app is your money** — a screen with no money on it has no colour at
-all. The ground inverts with the role: requester white, doer ink (`#0B0B0C`).
+One typeface (Instrument Sans), one colour, hairline dividers, no cards.
+**The only colour in the app is your money** — a screen with no money on it has no colour at all.
 
-| Token | Value | Use |
-| --- | --- | --- |
-| Ink | `#0B0B0C` | Text, primary actions, doer ground |
-| Held | `#0E7C5A` (`#3FBF8F` on ink) | Money, and nothing else |
-| Body | `#6E7076` (`#9A9CA3` on ink) | Secondary text — the lightest grey allowed on text |
-| Rest | `#ECECEE` (`#26282D` on ink) | Hairlines and dividers |
-| Fill | `#F6F6F7` (`#17181B` on ink) | Grouped reassurance blocks |
-| Ring | `#C8CACE` | Empty steps and dots — never text |
+Every colour is one of eleven tokens, declared as CSS custom properties on `body` and overridden
+on the root element when the theme is dark. Nothing in these files is a raw hex.
 
-Every figure carries `font-variant-numeric: tabular-nums`. Targets are ≥44px. Body text holds
-4.5:1 on whichever ground it sits on.
+| Token | Light | Dark | Use |
+| --- | --- | --- | --- |
+| `--bg` | `#FFFFFF` | `#0B0B0C` | The ground |
+| `--surface` | `#F6F6F7` | `#17181B` | Grouped reassurance blocks |
+| `--line` | `#ECECEE` | `#26282D` | Hairlines and dividers |
+| `--text` | `#0B0B0C` | `#F6F6F7` | Primary copy and figures |
+| `--body` | `#6E7076` | `#9A9CA3` | Secondary text |
+| `--faint` | `#9A9CA3` | `#6E7076` | Dots, rings, placeholders — **never text** |
+| `--money` | `#0E7C5A` | `#3FBF8F` | Money, and nothing else |
+| `--money-hi` | `#0A5E44` | `#5FD3A6` | Link hover |
+| `--accent` | `#0B0B0C` | `#F6F6F7` | Primary action fill |
+| `--on-accent` | `#FFFFFF` | `#0B0B0C` | Text on that fill |
+| `--on-money` | `#FFFFFF` | `#05130C` | Text on a money fill |
+
+### Theme
+
+Every board carries a `theme` tweak (`light` / `dark`). Light is the default on both sides.
+In the editor it is in the Tweaks tab; in code it swaps one declaration block on the root element,
+so a real implementation is `prefers-color-scheme` plus a manual override — no second stylesheet.
+
+`--faint` fails 4.5:1 on both grounds by design. It is for dots, rings and input placeholders.
+If it is ever holding words a person has to read, that is a bug.
+
+### Theme is the person's. Role is the tab.
+
+The doer side used to be ink because it was the doer side. That cannot survive a dark-mode
+preference: a requester who picks dark would lose the signal, and a doer who prefers light would
+be denied it. So neither side owns a ground any more. Role is carried by the
+**Get help / Earn** tabs, which sit on every root screen.
+
+The old look is still one click away — set a doer board's theme to dark.
+
+### One scale
+
+| | Value |
+| --- | --- |
+| Root top padding | `52px` on every phone board |
+| Side padding | `24px` |
+| Display | `28px / 600 / −1px` — exactly one per screen |
+| Row title | `16px / 500` · Body `15px / 400` · Label `13px / 500` |
+| Primary button | `54px`, radius `12px` · Secondary `48px` |
+| Touch targets | ≥ `44px` |
+| Figures | always `font-variant-numeric: tabular-nums` |
 
 ## Reference boards
 
