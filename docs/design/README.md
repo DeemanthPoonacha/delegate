@@ -1,10 +1,13 @@
 # Design specs
 
-One file per screen, written by the `ui-designer` agent or by hand, before the mobile ticket is
-implemented. A spec names every state — empty, loading, populated, error, offline, pending,
-rejected — and carries the final copy, not placeholders.
+Wireframes and design reference. A screen here names its states — empty, loading, populated,
+error, offline, pending, rejected — and carries the final copy, not placeholders.
 
-Mobile tickets waiting on a spec:
+**These are not build input.** Architecture and implementation are decided in their own
+sessions; this folder exists so those decisions are made against a settled picture of what each
+screen does, not so the markup gets ported.
+
+Mobile tickets these screens cover:
 
 | Ticket | Screens | Sprint |
 | --- | --- | --- |

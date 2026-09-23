@@ -3,6 +3,8 @@
 Twenty-three artboards, one design system, one canvas. Live and clickable:
 <https://claude.ai/code/artifact/75cb0b5e-085f-4818-ae4d-525c99a1723a>
 
+**These are wireframes and reference, not build input.** Nothing here is meant to be ported, compiled or copied into the app — the architecture and the implementation are decided separately. Read them to see what a screen is for, what states it has, and what the copy says.
+
 These are the canvas's own files, copied verbatim. `canvas.json` is the index — frame
 positions, titles and the annotations. Each `.dc.html` is one self-contained artboard at
 390×844 (Android-first), except the two reference boards. They are ordinary HTML: open one in
@@ -66,7 +68,7 @@ The old look is still one click away — set a doer board's theme to dark.
 | File | What it is |
 | --- | --- |
 | `Main.dc.html` | The system: tokens, type scale, parts, the role inversion |
-| `EscrowStates.dc.html` | Every escrow state × what each side sees × what the money is doing. **Build S7 from this board.** |
+| `EscrowStates.dc.html` | Every escrow state × what each side sees × what the money is doing — the reference to check S7's state machine against |
 
 ## Onboarding — Phase 1
 
