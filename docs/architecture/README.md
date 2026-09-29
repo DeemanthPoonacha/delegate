@@ -22,7 +22,7 @@ before it has been reviewed.
 | 3 | What are the deployable pieces? | [03-containers.md](03-containers.md) (C4 level 2) | Draft 1 |
 | 4 | Where are the boundaries inside them? | [04-modules.md](04-modules.md) | Accepted |
 | 5 | How do the hard parts work? | `05-*.md`, one per hard part (below) | Draft 1 |
-| 6 | How is it run, watched and paid for? | `06-operations.md` | Not started |
+| 6 | How is it run, watched and paid for? | [06-operations.md](06-operations.md) | Draft 1 |
 
 ### Step 5, the hard parts
 
@@ -39,3 +39,10 @@ In order, because each one leans on the one before:
 
 Decisions made along the way are recorded as ADRs in `adr/`, numbered from 0001 independently of
 `docs/decisions/`.
+
+## Reference
+
+- [faq.md](faq.md): short answers to the questions people ask about this architecture, with links
+  to the full reasoning.
+- [open-questions.md](open-questions.md): every question the architecture is waiting on, grouped by
+  who can answer it (lawyer, CA, founder, team).

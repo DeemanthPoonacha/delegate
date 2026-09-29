@@ -111,6 +111,6 @@ If step 2 fails, nothing happens at all, which is correct: no task, no job, no s
 | Module boundaries inside the codebase, and which module owns which tables | 4 |
 | The money lifecycle, ledger and reconciliation | 5 |
 | How matching works, and what "matching doer" means | 5 |
-| Hosting, networking, the load balancer in front of API and realtime, environments | 6 |
+| Hosting, networking, the load balancer in front of API and realtime, environments | Decided: [ADR-0007](adr/0007-hosting-on-managed-containers.md), [06](06-operations.md) |
 | Staff authentication for the ops console (a provider, or company single sign-on) | 6 |
 | Authentication vendor ([ADR-0006](adr/0006-managed-authentication.md) criteria) | Before sprint 1 |

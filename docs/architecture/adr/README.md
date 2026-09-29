@@ -11,6 +11,7 @@ One file per decision that would be expensive to reverse. Numbered independently
 | [0004](0004-postgres-for-data-jobs-and-events.md) | PostgreSQL as the database, the job queue and the event channel | Accepted |
 | [0005](0005-object-storage-for-files.md) | Files in private object storage, uploaded and downloaded directly | Accepted |
 | [0006](0006-managed-authentication.md) | A managed authentication provider for phone login (vendor open) | Accepted |
+| [0007](0007-hosting-on-managed-containers.md) | Host on AWS in Mumbai, on managed containers, defined as code | Accepted |
 
 ## How to write one
 

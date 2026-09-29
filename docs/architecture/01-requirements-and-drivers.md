@@ -218,3 +218,4 @@ task gallery. Each is a feature with ordinary data. They do not need an architec
 | PostgreSQL for data, jobs and events; no separate broker | No dual writes: a change and its follow-up job commit together | [ADR-0004](adr/0004-postgres-for-data-jobs-and-events.md) |
 | Files in private object storage via signed URLs | File bytes stay out of the API and database; deletion by storage policy | [ADR-0005](adr/0005-object-storage-for-files.md) |
 | Managed authentication for phone login | Login and SMS abuse protection without building them; authorisation stays ours | [ADR-0006](adr/0006-managed-authentication.md) |
+| Host on AWS Mumbai with ECS on Fargate and RDS, defined in CDK | No servers or cluster to run; uses the credits; data stays in India | [ADR-0007](adr/0007-hosting-on-managed-containers.md) |
