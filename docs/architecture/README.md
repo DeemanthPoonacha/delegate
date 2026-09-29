@@ -32,8 +32,8 @@ In order, because each one leans on the one before:
 | --- | --- | --- | --- |
 | 5a | How does a task move through its life, and what can never happen? | [05a-task-lifecycle.md](05a-task-lifecycle.md) | Draft 1 |
 | 5b | How does money move exactly once, and how do we prove it? | [05b-money.md](05b-money.md) | Draft 1 |
-| 5c | How do matching doers see a task within 10 seconds? | `05c-matching-and-feed.md` | Not started |
-| 5d | How do chat and live updates work on patchy 4G? | `05d-realtime.md` | Not started |
+| 5c | How do matching doers see a task within 10 seconds? | [05c-matching-and-feed.md](05c-matching-and-feed.md) | Draft 1 |
+| 5d | How do chat and live updates work on patchy 4G? | [05d-realtime.md](05d-realtime.md) | Draft 1 |
 | 5e | How are sensitive documents protected and deleted? | `05e-sensitive-data.md` | Not started |
 | 5f | How does progressive trust gate what people can do? | `05f-trust.md` | Not started |
 

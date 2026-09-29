@@ -197,6 +197,39 @@ Our ledger says what we believe happened. The gateway's records say what did
 The target in attribute 1 is **zero unexplained differences**. Any difference older than a day
 pauses payouts: the system fails closed.
 
+## 4. Fee policy
+
+Pricing will change many times before it settles, so no fee is a constant in code.
+
+**Draft commercial position** (for the founder to decide; tax and legal points need the CA and
+lawyer):
+
+| | Requester | Doer |
+| --- | --- | --- |
+| Platform fee | Small or zero at launch, included in one all-in displayed price | The main take rate, about 12–15% |
+| Gateway fee on collection | Absorbed into the requester's all-in price, not itemised | none |
+| Payout cost | none | Absorbed by the platform, or a small fee only for optional instant payouts |
+| Welfare fee | none | **Borne by the platform**, not deducted; likely a legal requirement (lawyer to confirm) |
+
+Supporting positions: the first task for each requester is fee-free (a promotion); tasks below a
+minimum value either cannot be posted or carry a small flat fee; the doer's fee falls as a
+requester–doer pair's billing grows, to make staying on the platform cheaper than leaving (risk
+R6). Actual gateway pricing must be checked per payment method, since UPI is often far cheaper
+than cards.
+
+**Design rules**
+
+1. **Fee rules are versioned data**, keyed by side, category, price band and the requester–doer
+   relationship. Changing a rule creates a new version; old versions are never edited.
+2. **Every task stores a snapshot** of the fee rule version that applied when it was accepted.
+   A price change never alters the terms of a task already under way.
+3. **Promotions are paid from their own account**, `platform:promotions`, so a waived fee shows
+   as a cost and never as reduced revenue.
+4. **Rules can target a cohort** of users, so the founder can compare, say, 12% against 15% on
+   real behaviour.
+5. **Contribution margin per task is a standard report**, grouped by category and price band,
+   computed from the ledger.
+
 ## Where the legal question (risk R1) fits
 
 The design above does not depend on who legally holds the money. If the lawyer requires an escrow
@@ -221,3 +254,7 @@ rules stay the same. This is the containment promised in risk R1.
 | Who bears the gateway fee on a refunded payment? | In the example the platform loses ₹10 on every cancelled ₹500 task |
 | Who bears the welfare fee: the platform, or deducted from the doer? | Changes row 6 |
 | Is GST due on the fee, or on the whole task value? | Could change which accounts exist |
+| What does the gateway charge per method (UPI, cards, net banking), and for payouts? | Decides whether small tasks can carry the gateway cost at all |
+| Does the founder accept the draft fee position in section 4? | Sets the first fee rule version |
+| Minimum task value: a hard floor, or a small flat fee below a threshold? | Protects margin on ₹100 tasks |
+| Is a first-task promotion affordable, and for how long? | Sizes the promotions budget |
