@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Review and release</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;--bg:#FFFFFF;--surface:#F6F6F7;--line:#ECECEE;--text:#0B0B0C;--body:#6E7076;--faint:#9A9CA3;--money:#0E7C5A;--money-hi:#0A5E44;--accent:#0B0B0C;--on-accent:#FFFFFF;--on-money:#FFFFFF;}
+a{color:var(--money);text-decoration:none}a:hover{color:var(--money-hi)}
+button{font-family:inherit;cursor:pointer}
+input,textarea{font-family:inherit}
+input::placeholder,textarea::placeholder{color:var(--faint)}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: var(--bg); display: flex; flex-direction: column; padding: 52px 0 0; {{ vars }}">
+
+  <div style="padding: 0 14px;">
+    <a href="TaskRoom.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: var(--text);">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>
+    </a>
+  </div>
+
+  <div style="flex-grow: 1; overflow: hidden; padding: 6px 24px 0; display: flex; flex-direction: column;">
+
+    <h1 style="margin: 0 0 22px; font-size: 28px; font-weight: 600; line-height: 1.12; letter-spacing: -1px; color: var(--text);">Faisal delivered</h1>
+
+    <div style="display: flex; flex-direction: column; gap: 6px; padding-bottom: 20px; border-bottom: 1px solid var(--line);">
+      <span style="font-size: 13px; color: var(--body);">Claim reference number</span>
+      <span style="font-size: 28px; font-weight: 600; letter-spacing: -0.6px; color: var(--text); font-variant-numeric: tabular-nums;">MC-4471-2290</span>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--line);">
+      <span style="font-size: 15px; color: var(--body);">Surveyor visit</span>
+      <span style="font-size: 15px; font-weight: 500; color: var(--text);">24 Sep, 11am–1pm</span>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--line);">
+      <span style="font-size: 15px; color: var(--body);">Confirmation SMS</span>
+      <a href="#sms" style="font-size: 15px; font-weight: 500;">screenshot.png</a>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 12px; padding: 20px 0;">
+      <span style="width: 18px; height: 18px; border-radius: 999px; background: var(--money); color: var(--on-money); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </span>
+      <span style="font-size: 13.5px; line-height: 1.5; color: var(--body);">Every field this category requires is filled. You can check the reference on the insurer's site before approving.</span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; margin-top: auto; padding-bottom: 20px;">
+      <span style="font-size: 13px; font-weight: 500; color: var(--body);">How did it go?</span>
+      <div style="display: flex; gap: 6px;">
+        <sc-for list="{{ stars }}" as="s" hint-placeholder-count="5">
+          <button type="button" aria-label="{{ s.label }}" style="width: 44px; height: 44px; border: none; background: transparent; padding: 0; display: flex; align-items: center; justify-content: center;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="{{ s.fill }}" stroke="{{ s.stroke }}" stroke-width="1.5" stroke-linejoin="round"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9z"/></svg>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 16px 24px 24px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 12px;">
+    <button type="button" style="height: 54px; border: none; border-radius: 12px; background: var(--money); color: var(--on-money); font-size: 16px; font-weight: 600;">Approve and release ₹250</button>
+    <div style="display: flex; gap: 10px;">
+      <button type="button" style="flex-grow: 1; height: 46px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); font-size: 14.5px; font-weight: 500; color: var(--text);">Ask for a change</button>
+      <button type="button" style="flex-grow: 1; height: 46px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); font-size: 14.5px; font-weight: 500; color: var(--text);">Dispute</button>
+    </div>
+    <p style="margin: 0; text-align: center; font-size: 13px; color: var(--body);">Approves itself in 47 hours if you do nothing.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light","section":"Theme"},"$preview":{"width":390,"height":844}}'>
+var DARK = '--bg:#0B0B0C;--surface:#17181B;--line:#26282D;--text:#F6F6F7;--body:#9A9CA3;--faint:#6E7076;--money:#3FBF8F;--money-hi:#5FD3A6;--accent:#F6F6F7;--on-accent:#0B0B0C;--on-money:#05130C;';
+class Component extends DCLogic {
+  renderVals() {
+    var labels = ['1 star', '2 stars', '3 stars', '4 stars', '5 stars'];
+    return {
+      vars: this.props.theme === 'dark' ? DARK : '',
+      stars: labels.map(function (l, i) {
+        return { label: l, fill: i < 5 ? 'var(--text)' : 'none', stroke: i < 5 ? 'var(--text)' : 'var(--faint)' };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

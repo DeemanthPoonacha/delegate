@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Credential vault</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;--bg:#FFFFFF;--surface:#F6F6F7;--line:#ECECEE;--text:#0B0B0C;--body:#6E7076;--faint:#9A9CA3;--money:#0E7C5A;--money-hi:#0A5E44;--accent:#0B0B0C;--on-accent:#FFFFFF;--on-money:#FFFFFF;}
+a{color:var(--money);text-decoration:none}a:hover{color:var(--money-hi)}
+button{font-family:inherit;cursor:pointer}
+input,textarea{font-family:inherit}
+input::placeholder,textarea::placeholder{color:var(--faint)}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: var(--bg); display: flex; flex-direction: column; padding: 52px 0 0; {{ vars }}">
+
+  <div style="padding: 0 24px 16px; display: flex; flex-direction: column; gap: 10px;">
+    <span style="display: inline-flex; align-self: flex-start; align-items: center; height: 26px; padding: 0 10px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 12px; color: var(--body);">Phase 4+</span>
+    <h1 style="margin: 0; font-size: 28px; font-weight: 600; line-height: 1.12; letter-spacing: -1px; color: var(--text);">Lent, not pasted</h1>
+    <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--body);">Details you give a doer for one task, that expire when it closes — instead of sitting in a chat thread forever.</p>
+  </div>
+
+  <div style="flex-grow: 1; overflow: hidden; padding: 0 24px; display: flex; flex-direction: column;">
+    <sc-for list="{{ items }}" as="i" hint-placeholder-count="4">
+      <div style="padding: 17px 0; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--line);">
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: 15.5px; font-weight: 500; color: var(--text);">{{ i.name }}</span>
+          <span style="font-size: 13px; color: var(--body); font-variant-numeric: tabular-nums;">{{ i.value }}</span>
+        </div>
+        <span style="{{ i.style }}">{{ i.state }}</span>
+      </div>
+    </sc-for>
+
+    <div style="margin-top: 22px; padding: 18px; background: var(--surface); border-radius: 14px; display: flex; flex-direction: column; gap: 10px;">
+      <span style="font-size: 14px; font-weight: 600; color: var(--text);">Who saw what</span>
+      <sc-for list="{{ log }}" as="l" hint-placeholder-count="3">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+          <span style="font-size: 13.5px; color: var(--text);">{{ l.who }}</span>
+          <span style="font-size: 12.5px; color: var(--body);">{{ l.when }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding: 14px 24px 24px; border-top: 1px solid var(--line);">
+    <p style="margin: 0; font-size: 13px; line-height: 1.5; color: var(--body);">Never in here: passwords, OTPs, UPI PINs, CVVs. Those do not become safe by being stored well.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light","section":"Theme"},"$preview":{"width":390,"height":844}}'>
+var DARK = '--bg:#0B0B0C;--surface:#17181B;--line:#26282D;--text:#F6F6F7;--body:#9A9CA3;--faint:#6E7076;--money:#3FBF8F;--money-hi:#5FD3A6;--accent:#F6F6F7;--on-accent:#0B0B0C;--on-money:#05130C;';
+class Component extends DCLogic {
+  renderVals() {
+    var live = 'display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--money);';
+    var off = 'display:inline-flex;align-items:center;font-size:13px;color:var(--body);';
+    return {
+      vars: this.props.theme === 'dark' ? DARK : '',
+      items: [
+        { name: 'Motor policy number', value: 'PB-••••-4471', state: 'Lent to Faisal', style: live },
+        { name: 'Health policy number', value: 'SH-••••-9920', state: 'Expired', style: off },
+        { name: 'Father’s EPF UAN', value: '1001••••7733', state: 'Expired', style: off },
+        { name: 'Address proof scan', value: 'rental-agreement.pdf', state: 'Not lent', style: off }
+      ],
+      log: [
+        { who: 'Faisal R. opened the policy number', when: 'Today 11:06' },
+        { who: 'Meera S. access expired automatically', when: '19 Sep' },
+        { who: 'Kiran D. access revoked by you', when: '12 Sep' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

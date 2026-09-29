@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Verification — pending, failed and review states</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;--bg:#FFFFFF;--surface:#F6F6F7;--line:#ECECEE;--text:#0B0B0C;--body:#6E7076;--faint:#9A9CA3;--money:#0E7C5A;--money-hi:#0A5E44;--accent:#0B0B0C;--on-accent:#FFFFFF;--on-money:#FFFFFF;}
+a{color:var(--money);text-decoration:none}a:hover{color:var(--money-hi)}
+button{font-family:inherit;cursor:pointer}
+input,textarea{font-family:inherit}
+input::placeholder,textarea::placeholder{color:var(--faint)}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: var(--bg); display: flex; flex-direction: column; padding: 52px 24px 24px; {{ vars }}">
+
+  <span style="font-size: 13px; font-weight: 600; color: var(--body);">The three states that actually happen</span>
+
+  <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 14px; padding-top: 18px;">
+
+    <div style="border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 12px;">
+      <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--body);">
+        <span style="width: 6px; height: 6px; border-radius: 999px; background: var(--faint); display: block;"></span>Checking
+      </span>
+      <span style="font-size: 20px; font-weight: 600; letter-spacing: -0.6px; line-height: 1.2; color: var(--text);">Your ID is with the verifier</span>
+      <p style="margin: 0; font-size: 14px; line-height: 1.5; color: var(--body);">Usually under two minutes. You can close the app — we'll text you.</p>
+      <div style="height: 3px; background: var(--line); border-radius: 2px; overflow: hidden;">
+        <div style="width: 60%; height: 100%; background: var(--accent); border-radius: 2px;"></div>
+      </div>
+    </div>
+
+    <div style="border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 12px;">
+      <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--text);">
+        <span style="width: 6px; height: 6px; border-radius: 999px; background: var(--accent); display: block;"></span>Needs another try
+      </span>
+      <span style="font-size: 20px; font-weight: 600; letter-spacing: -0.6px; line-height: 1.2; color: var(--text);">The name didn't match</span>
+      <p style="margin: 0; font-size: 14px; line-height: 1.5; color: var(--body);">Your profile says <span style="color: var(--text); font-weight: 500;">Rohit Yadav</span>. Your ID says <span style="color: var(--text); font-weight: 500;">Rohit Kumar Yadav</span>. Fix the profile and we'll check again — nothing else is lost.</p>
+      <div style="display: flex; gap: 10px;">
+        <a href="Profile.dc.html" style="flex-grow: 1; height: 48px; border-radius: 12px; background: var(--accent); color: var(--on-accent); display: flex; align-items: center; justify-content: center; font-size: 14.5px; font-weight: 500;">Edit my name</a>
+        <button type="button" style="flex-grow: 1; height: 48px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); font-size: 14.5px; font-weight: 500; color: var(--text);">Try again</button>
+      </div>
+    </div>
+
+    <div style="border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 12px;">
+      <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--body);">
+        <span style="width: 6px; height: 6px; border-radius: 999px; background: var(--faint); display: block;"></span>With a person
+      </span>
+      <span style="font-size: 20px; font-weight: 600; letter-spacing: -0.6px; line-height: 1.2; color: var(--text);">Someone is looking at this</span>
+      <p style="margin: 0; font-size: 14px; line-height: 1.5; color: var(--body);">Automated checks couldn't decide, so a human is reviewing it. You'll hear back within 12 hours, either way, with a reason you can act on.</p>
+      <a href="DoerFeed.dc.html" style="align-self: flex-start; font-size: 14px; font-weight: 500;">Browse tasks meanwhile</a>
+    </div>
+  </div>
+
+  <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: var(--body);">Design note: the failure path is the common one. Every state names what went wrong, what it costs, and the one thing to do next.</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light","section":"Theme"},"$preview":{"width":390,"height":844}}'>
+var DARK = '--bg:#0B0B0C;--surface:#17181B;--line:#26282D;--text:#F6F6F7;--body:#9A9CA3;--faint:#6E7076;--money:#3FBF8F;--money-hi:#5FD3A6;--accent:#F6F6F7;--on-accent:#0B0B0C;--on-money:#05130C;';
+class Component extends DCLogic {
+  renderVals() { return { vars: this.props.theme === 'dark' ? DARK : '' }; }
+}
+</script>
+</body>
+</html>

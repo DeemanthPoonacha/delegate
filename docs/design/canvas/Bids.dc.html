@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Compare project pitches</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;--bg:#FFFFFF;--surface:#F6F6F7;--line:#ECECEE;--text:#0B0B0C;--body:#6E7076;--faint:#9A9CA3;--money:#0E7C5A;--money-hi:#0A5E44;--accent:#0B0B0C;--on-accent:#FFFFFF;--on-money:#FFFFFF;}
+a{color:var(--money);text-decoration:none}a:hover{color:var(--money-hi)}
+button{font-family:inherit;cursor:pointer}
+input,textarea{font-family:inherit}
+input::placeholder,textarea::placeholder{color:var(--faint)}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: var(--bg); display: flex; flex-direction: column; padding: 52px 0 0; {{ vars }}">
+
+  <div style="padding: 0 24px 16px; display: flex; flex-direction: column; gap: 10px;">
+    <span style="display: inline-flex; align-self: flex-start; align-items: center; height: 26px; padding: 0 10px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 12px; color: var(--body);">Phase 4+</span>
+    <h1 style="margin: 0; font-size: 28px; font-weight: 600; line-height: 1.12; letter-spacing: -1px; color: var(--text);">Seven pitches,<br>one screen</h1>
+    <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--body);">Instagram calendar, 10 hrs a week, budget ₹8,000–12,000 a month.</p>
+  </div>
+
+  <div style="flex-grow: 1; overflow: hidden; padding: 0 24px; display: flex; flex-direction: column;">
+    <div style="display: flex; align-items: center; gap: 0; padding-bottom: 10px;">
+      <span style="flex-grow: 1; font-size: 12.5px; font-weight: 600; color: var(--text);">Who</span>
+      <span style="width: 70px; text-align: right; font-size: 12.5px; font-weight: 600; color: var(--text);">Rate</span>
+      <span style="width: 66px; text-align: right; font-size: 12.5px; font-weight: 600; color: var(--text);">Done</span>
+      <span style="width: 56px; text-align: right; font-size: 12.5px; font-weight: 600; color: var(--text);">Rating</span>
+    </div>
+    <sc-for list="{{ bids }}" as="b" hint-placeholder-count="5">
+      <button type="button" style="{{ b.rowStyle }}">
+        <span style="flex-grow: 1; text-align: left; display: flex; flex-direction: column; gap: 3px;">
+          <span style="font-size: 15px; font-weight: 500; color: var(--text);">{{ b.name }}</span>
+          <span style="font-size: 12.5px; color: var(--body);">{{ b.note }}</span>
+        </span>
+        <span style="width: 70px; text-align: right; font-size: 15px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums;">{{ b.rate }}</span>
+        <span style="width: 66px; text-align: right; font-size: 14px; color: var(--body); font-variant-numeric: tabular-nums;">{{ b.done }}</span>
+        <span style="width: 56px; text-align: right; font-size: 14px; color: var(--body); font-variant-numeric: tabular-nums;">{{ b.rating }}</span>
+      </button>
+    </sc-for>
+  </div>
+
+  <div style="padding: 14px 24px 24px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px;">
+    <p style="margin: 0; font-size: 13px; line-height: 1.5; color: var(--body);">Sorted by category history, not by lowest price — a race to the bottom drives out the doers this tier depends on.</p>
+    <a href="Fund.dc.html" style="height: 48px; border-radius: 12px; background: var(--accent); color: var(--on-accent); display: flex; align-items: center; justify-content: center; font-size: 15.5px; font-weight: 600;">Shortlist two and ask</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light","section":"Theme"},"$preview":{"width":390,"height":844}}'>
+var DARK = '--bg:#0B0B0C;--surface:#17181B;--line:#26282D;--text:#F6F6F7;--body:#9A9CA3;--faint:#6E7076;--money:#3FBF8F;--money-hi:#5FD3A6;--accent:#F6F6F7;--on-accent:#0B0B0C;--on-money:#05130C;';
+class Component extends DCLogic {
+  renderVals() {
+    var row = 'display:flex;align-items:center;gap:0;padding:15px 0;border-top:1px solid var(--line);background:transparent;border-left:none;border-right:none;border-bottom:none;';
+    var rowTop = row + 'border-top:1.5px solid var(--text);';
+    return {
+      vars: this.props.theme === 'dark' ? DARK : '',
+      bids: [
+        { name: 'Ananya P.', note: 'Ran 3 D2C accounts', rate: '₹11,000', done: '9', rating: '4.9', rowStyle: rowTop },
+        { name: 'Vikram S.', note: 'Design-led, slower', rate: '₹12,000', done: '14', rating: '4.8', rowStyle: row },
+        { name: 'Neha K.', note: 'Copy strong, no design', rate: '₹8,500', done: '22', rating: '4.7', rowStyle: row },
+        { name: 'Rahul M.', note: 'First project tier task', rate: '₹8,000', done: '1', rating: '—', rowStyle: row },
+        { name: 'Divya R.', note: 'Available mornings only', rate: '₹9,500', done: '6', rating: '4.6', rowStyle: row }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

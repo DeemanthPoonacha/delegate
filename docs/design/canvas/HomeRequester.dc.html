@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Home — requester</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;--bg:#FFFFFF;--surface:#F6F6F7;--line:#ECECEE;--text:#0B0B0C;--body:#6E7076;--faint:#9A9CA3;--money:#0E7C5A;--money-hi:#0A5E44;--accent:#0B0B0C;--on-accent:#FFFFFF;--on-money:#FFFFFF;}
+a{color:var(--money);text-decoration:none}a:hover{color:var(--money-hi)}
+button{font-family:inherit;cursor:pointer}
+input,textarea{font-family:inherit}
+input::placeholder,textarea::placeholder{color:var(--faint)}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: var(--bg); display: flex; flex-direction: column; padding: 52px 0 0; {{ vars }}">
+
+  <div style="padding: 0 24px 20px; display: flex; align-items: center; justify-content: space-between;">
+    <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.5px; color: var(--text);">Delegate</span>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <button type="button" aria-label="Notifications" style="width: 44px; height: 44px; border: none; background: transparent; color: var(--text); display: flex; align-items: center; justify-content: center;">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 6-2 7-2 7h16s-2-1-2-7"/><path d="M10.5 20a1.8 1.8 0 0 0 3 0"/></svg>
+      </button>
+      <span style="width: 32px; height: 32px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--text); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500;">R</span>
+    </div>
+  </div>
+
+  <div style="padding: 0 24px; display: flex; gap: 22px; border-bottom: 1px solid var(--line);">
+    <a href="HomeRequester.dc.html" style="font-size: 15px; font-weight: 600; color: var(--text); padding-bottom: 12px; border-bottom: 2px solid var(--text);">Get help</a>
+    <a href="HomeDoer.dc.html" style="font-size: 15px; font-weight: 500; color: var(--body); padding-bottom: 12px;">Earn</a>
+  </div>
+
+  <div style="flex-grow: 1; overflow: hidden; padding: 0 24px; display: flex; flex-direction: column;">
+
+    <a href="Post.dc.html" style="padding: 26px 0 24px; display: flex; flex-direction: column; gap: 14px; border-bottom: 1px solid var(--line);">
+      <span style="font-size: 28px; font-weight: 600; line-height: 1.12; letter-spacing: -1px; color: var(--text);">What needs doing?</span>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="flex-grow: 1; font-size: 14px; color: var(--body);">Four fields, ninety seconds</span>
+        <span style="height: 36px; padding: 0 16px; border-radius: 999px; background: var(--accent); color: var(--on-accent); font-size: 14px; font-weight: 500; display: flex; align-items: center;">Start</span>
+      </div>
+    </a>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 24px 0 4px;">
+      <span style="font-size: 13px; font-weight: 500; color: var(--body);">Running now</span>
+      <span style="font-size: 13px; font-weight: 600; color: var(--money); font-variant-numeric: tabular-nums;">₹750 held</span>
+    </div>
+
+    <sc-for list="{{ tasks }}" as="t" hint-placeholder-count="3">
+      <a href="{{ t.href }}" style="padding: 18px 0; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid var(--line);">
+        <div style="display: flex; align-items: flex-start; gap: 16px;">
+          <span style="flex-grow: 1; font-size: 16px; font-weight: 500; line-height: 1.35; color: var(--text);">{{ t.title }}</span>
+          <span style="font-size: 16px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums;">{{ t.price }}</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span style="{{ t.stateStyle }}"><span style="{{ t.dot }}"></span>{{ t.state }}</span>
+          <span style="font-size: 13px; color: var(--body);">{{ t.meta }}</span>
+          <span style="flex-grow: 1;"></span>
+          <span style="font-size: 13px; font-weight: 500; color: var(--text);">{{ t.badge }}</span>
+        </div>
+      </a>
+    </sc-for>
+
+    <div style="padding: 26px 0 0; display: flex; flex-direction: column; gap: 14px;">
+      <span style="font-size: 13px; font-weight: 500; color: var(--body);">Run again</span>
+      <sc-for list="{{ repeats }}" as="r" hint-placeholder-count="2">
+        <button type="button" style="background: transparent; border: none; padding: 0; display: flex; align-items: center; gap: 12px; text-align: left;">
+          <span style="flex-grow: 1; font-size: 15px; font-weight: 500; color: var(--text);">{{ r.title }}</span>
+          <span style="font-size: 15px; font-weight: 500; color: var(--body); font-variant-numeric: tabular-nums;">{{ r.price }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+
+  <nav style="height: 72px; box-sizing: border-box; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-around; padding: 0 12px 8px;">
+    <a href="HomeRequester.dc.html" style="width: 62px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: var(--text);">Home</a>
+    <a href="Applicants.dc.html" style="width: 62px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--body);">Tasks</a>
+    <a href="TaskRoom.dc.html" style="width: 62px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--body);">Chat</a>
+    <a href="Guardrails.dc.html" style="width: 62px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--body);">Money</a>
+    <a href="Kyc.dc.html" style="width: 62px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--body);">You</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light","section":"Theme"},"$preview":{"width":390,"height":844}}'>
+var DARK = '--bg:#0B0B0C;--surface:#17181B;--line:#26282D;--text:#F6F6F7;--body:#9A9CA3;--faint:#6E7076;--money:#3FBF8F;--money-hi:#5FD3A6;--accent:#F6F6F7;--on-accent:#0B0B0C;--on-money:#05130C;';
+class Component extends DCLogic {
+  renderVals() {
+    var dot = function (c) { return 'width:6px;height:6px;border-radius:999px;background:' + c + ';display:block;'; };
+    var held = 'display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--money);';
+    var grey = 'display:flex;align-items:center;gap:6px;font-size:13px;color:var(--body);';
+    return {
+      vars: this.props.theme === 'dark' ? DARK : '',
+      tasks: [
+        { title: 'Call HDFC Ergo, log my claim, send the number', price: '₹250', state: 'In progress', stateStyle: held, dot: dot('var(--money)'), meta: 'Due 6:00 pm', badge: '2 new', href: 'TaskRoom.dc.html' },
+        { title: 'Goa hotel shortlist — 3 options', price: '₹500', state: 'Waiting on you', stateStyle: grey, dot: dot('var(--faint)'), meta: '47 h left', badge: '', href: 'Review.dc.html' },
+        { title: 'EPF withdrawal paperwork for my father', price: '₹399', state: 'Matching', stateStyle: grey, dot: dot('var(--faint)'), meta: '4 applicants', badge: 'Pick', href: 'Applicants.dc.html' }
+      ],
+      repeats: [
+        { title: 'EPF follow-up', price: '₹300' },
+        { title: 'Fill school admission form', price: '₹100' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

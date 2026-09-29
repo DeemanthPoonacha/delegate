@@ -1,0 +1,277 @@
+{
+  "attachments": {},
+  "boards": {
+    "Applicants.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "8 · Choose a doer",
+      "w": 390,
+      "x": 940,
+      "y": 2440
+    },
+    "Bench.dc.html": {
+      "h": 844,
+      "title": "Later · Your people",
+      "w": 390,
+      "x": 2350,
+      "y": 4840
+    },
+    "Bids.dc.html": {
+      "h": 844,
+      "title": "Later · Compare pitches",
+      "w": 390,
+      "x": 940,
+      "y": 4840
+    },
+    "DoerFeed.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "13 · Find work",
+      "w": 390,
+      "x": 470,
+      "y": 3574
+    },
+    "Earnings.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "14 · Earnings and payout",
+      "w": 390,
+      "x": 940,
+      "y": 3574
+    },
+    "EscrowStates.dc.html": {
+      "h": 560,
+      "title": "Escrow states — engineering reference",
+      "w": 1240,
+      "x": 1320,
+      "y": 0
+    },
+    "Fund.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "9 · Hold the money",
+      "w": 390,
+      "x": 1410,
+      "y": 2440
+    },
+    "Gallery.dc.html": {
+      "h": 844,
+      "title": "Later · What people delegate",
+      "w": 390,
+      "x": 470,
+      "y": 4840
+    },
+    "Guardrails.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "15 · Where your money is",
+      "w": 390,
+      "x": 1410,
+      "y": 3574
+    },
+    "Handoff.dc.html": {
+      "h": 844,
+      "title": "Later · Doer prepares, you submit",
+      "w": 390,
+      "x": 1880,
+      "y": 4840
+    },
+    "HomeDoer.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "12 · Home — doer",
+      "w": 390,
+      "x": 0,
+      "y": 3574
+    },
+    "HomeRequester.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "6 · Home — requester",
+      "w": 390,
+      "x": 0,
+      "y": 2440
+    },
+    "Kyc.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "4 · Verify identity",
+      "w": 390,
+      "x": 1410,
+      "y": 1240
+    },
+    "KycPending.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "5 · Pending / failed / review",
+      "w": 390,
+      "x": 1880,
+      "y": 1240
+    },
+    "Main.dc.html": {
+      "h": 880,
+      "title": "Quiet — the system",
+      "w": 1240,
+      "x": 0,
+      "y": 0
+    },
+    "Otp.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "2 · Verification code",
+      "w": 390,
+      "x": 470,
+      "y": 1240
+    },
+    "Phone.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "1 · Phone number",
+      "w": 390,
+      "x": 0,
+      "y": 1240
+    },
+    "Post.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "7 · Post in under 90s",
+      "w": 390,
+      "x": 470,
+      "y": 2440
+    },
+    "Profile.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "3 · Profile",
+      "w": 390,
+      "x": 940,
+      "y": 1240
+    },
+    "Review.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "11 · Review and release",
+      "w": 390,
+      "x": 2350,
+      "y": 2440
+    },
+    "TaskRoom.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "title": "10 · Chat + deliverable dock",
+      "w": 390,
+      "x": 1880,
+      "y": 2440
+    },
+    "Vault.dc.html": {
+      "h": 844,
+      "title": "Later · Credential vault",
+      "w": 390,
+      "x": 1410,
+      "y": 4840
+    },
+    "VoicePost.dc.html": {
+      "h": 844,
+      "title": "Later · Post by voice",
+      "w": 390,
+      "x": 0,
+      "y": 4840
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-09-22T09:00:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "n1": {
+      "text": "Phase 1 exits when a doer can register, pass KYC and appear in a list. These five screens are exactly that — and none of the four earlier canvases contained a single one of them.\n\nScreen 5 is the one that matters. The failure path is the common path: a name that doesn't match, a verifier that can't decide. Each state names what went wrong and the one thing to do next.",
+      "w": 320,
+      "x": 2400,
+      "y": 1240
+    },
+    "n2": {
+      "text": "No booking fee on the requester side. The 18% comes out of the doer's payout, so the price posted is the price paid — that is ADR-0002 made visible.\n\nOne earlier canvas charged the requester a fee at this step. It contradicts the fee decision, so it is not carried over.",
+      "w": 320,
+      "x": 2820,
+      "y": 2440
+    },
+    "n3": {
+      "text": "Dark mode is a preference, so neither side owns a ground any more — the doer screens are no longer ink by default.\n\nRole moved to the Get help / Earn tabs, which sit on every root screen. A doer who wants light gets light.\n\nEvery board carries a Theme tweak. Set it to dark to see any screen inverted; set the doer boards to dark to get the old look back.",
+      "w": 320,
+      "x": 2400,
+      "y": 3574
+    },
+    "t1": {
+      "kind": "title1",
+      "maxW": 2560,
+      "text": "Foundations — the system, and every state money can be in",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "t2": {
+      "kind": "title1",
+      "maxW": 2270,
+      "text": "Onboarding — Phase 1, the set nobody had drawn",
+      "w": 240,
+      "x": 0,
+      "y": 940
+    },
+    "t3": {
+      "kind": "title1",
+      "maxW": 2270,
+      "text": "The requester loop — Phase 2",
+      "w": 240,
+      "x": 0,
+      "y": 2140
+    },
+    "t4": {
+      "kind": "title1",
+      "maxW": 2270,
+      "text": "Delivery, the doer side, the money — Phase 2 into 3",
+      "w": 240,
+      "x": 0,
+      "y": 3340
+    },
+    "t5": {
+      "kind": "title1",
+      "maxW": 2740,
+      "text": "Later — carried over, but not before Phase 4",
+      "w": 240,
+      "x": 0,
+      "y": 4540
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "EscrowStates.dc.html",
+    "Phone.dc.html",
+    "Otp.dc.html",
+    "Profile.dc.html",
+    "Kyc.dc.html",
+    "KycPending.dc.html",
+    "HomeRequester.dc.html",
+    "Post.dc.html",
+    "Applicants.dc.html",
+    "Fund.dc.html",
+    "TaskRoom.dc.html",
+    "Review.dc.html",
+    "HomeDoer.dc.html",
+    "DoerFeed.dc.html",
+    "Earnings.dc.html",
+    "Guardrails.dc.html",
+    "VoicePost.dc.html",
+    "Gallery.dc.html",
+    "Bids.dc.html",
+    "Vault.dc.html",
+    "Handoff.dc.html",
+    "Bench.dc.html"
+  ],
+  "pages": [],
+  "title": "Delegate — Design Source",
+  "v": 3
+}

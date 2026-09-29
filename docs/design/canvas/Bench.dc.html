@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Your people</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;--bg:#FFFFFF;--surface:#F6F6F7;--line:#ECECEE;--text:#0B0B0C;--body:#6E7076;--faint:#9A9CA3;--money:#0E7C5A;--money-hi:#0A5E44;--accent:#0B0B0C;--on-accent:#FFFFFF;--on-money:#FFFFFF;}
+a{color:var(--money);text-decoration:none}a:hover{color:var(--money-hi)}
+button{font-family:inherit;cursor:pointer}
+input,textarea{font-family:inherit}
+input::placeholder,textarea::placeholder{color:var(--faint)}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: var(--bg); display: flex; flex-direction: column; padding: 52px 0 0; {{ vars }}">
+
+  <div style="padding: 0 24px 16px; display: flex; flex-direction: column; gap: 10px;">
+    <span style="display: inline-flex; align-self: flex-start; align-items: center; height: 26px; padding: 0 10px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 12px; color: var(--body);">Phase 4+</span>
+    <h1 style="margin: 0; font-size: 28px; font-weight: 600; line-height: 1.12; letter-spacing: -1px; color: var(--text);">Your people</h1>
+    <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--body);">Send work straight to someone who already knows your context. No feed, no re-explaining.</p>
+  </div>
+
+  <div style="flex-grow: 1; overflow: hidden; padding: 0 24px; display: flex; flex-direction: column;">
+    <sc-for list="{{ people }}" as="p" hint-placeholder-count="3">
+      <div style="padding: 18px 0; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--line);">
+        <span style="width: 42px; height: 42px; flex-shrink: 0; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 500; color: var(--text);">{{ p.initials }}</span>
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 3px;">
+          <span style="font-size: 15.5px; font-weight: 600; color: var(--text);">{{ p.name }}</span>
+          <span style="font-size: 13px; color: var(--body);">{{ p.meta }}</span>
+        </div>
+        <span style="{{ p.actionStyle }}">{{ p.action }}</span>
+      </div>
+    </sc-for>
+
+    <div style="margin-top: 22px; padding: 18px; background: var(--surface); border-radius: 14px; display: flex; flex-direction: column; gap: 12px;">
+      <span style="font-size: 14px; font-weight: 600; color: var(--text);">Standing booking</span>
+      <div style="display: flex; align-items: baseline; justify-content: space-between;">
+        <span style="font-size: 14px; color: var(--body);">Meera · 5 hrs every Monday</span>
+        <span style="font-size: 16px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums;">₹1,500</span>
+      </div>
+      <p style="margin: 0; font-size: 13px; line-height: 1.5; color: var(--body);">Creates the task automatically and holds the money each week. Cancel any Sunday.</p>
+    </div>
+  </div>
+
+  <div style="padding: 14px 24px 24px; border-top: 1px solid var(--line);">
+    <p style="margin: 0; font-size: 13px; line-height: 1.5; color: var(--body);">This is the screen that makes staying cheaper than leaving. Without it, the second task happens on WhatsApp.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light","section":"Theme"},"$preview":{"width":390,"height":844}}'>
+var DARK = '--bg:#0B0B0C;--surface:#17181B;--line:#26282D;--text:#F6F6F7;--body:#9A9CA3;--faint:#6E7076;--money:#3FBF8F;--money-hi:#5FD3A6;--accent:#F6F6F7;--on-accent:#0B0B0C;--on-money:#05130C;';
+class Component extends DCLogic {
+  renderVals() {
+    var strong = 'display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:13.5px;font-weight:500;';
+    var plain = 'display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:999px;background:var(--bg);border:1px solid var(--line);color:var(--text);font-size:13.5px;font-weight:500;';
+    return {
+      vars: this.props.theme === 'dark' ? DARK : '',
+      people: [
+        { initials: 'FR', name: 'Faisal R.', meta: '4 insurance tasks · avg 38 min', action: 'Send work', actionStyle: strong },
+        { initials: 'MS', name: 'Meera S.', meta: '11 tasks · booked weekly', action: 'Booked', actionStyle: plain },
+        { initials: 'KD', name: 'Kiran D.', meta: '2 errands · last one 3 weeks ago', action: 'Send work', actionStyle: plain }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
